@@ -1,13 +1,20 @@
 import {defineConfig} from 'vite';
 import {hydrogen} from '@shopify/hydrogen/vite';
-import {oxygen} from '@shopify/mini-oxygen/vite';
 import {vitePlugin as remix} from '@remix-run/dev';
 import tsconfigPaths from 'vite-tsconfig-paths';
+import {cloudflare} from '@cloudflare/vite-plugin';
 
 export default defineConfig({
+  environments: {
+    ssr: {
+      build: {
+        outDir: 'dist/server',
+      },
+    },
+  },
   plugins: [
     hydrogen(),
-    oxygen(),
+    cloudflare({viteEnvironment: {name: 'ssr'}}),
     remix({
       presets: [hydrogen.v3preset()],
       ignoredRouteFiles: ['**/.*'],

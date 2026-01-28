@@ -1,5 +1,5 @@
-import {redirect} from '@shopify/remix-oxygen';
-import type {ActionFunctionArgs} from '@shopify/remix-oxygen';
+import {redirect} from '@remix-run/cloudflare';
+import type {ActionFunctionArgs} from '@remix-run/cloudflare';
 
 export async function action({request}: ActionFunctionArgs) {
   let body;

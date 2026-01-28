@@ -6,7 +6,7 @@ import type {
   Image,
   Shop,
 } from '@shopify/hydrogen/storefront-api-types';
-import type {AppLoadContext} from '@shopify/remix-oxygen';
+import type {AppLoadContext} from '@remix-run/cloudflare';
 import type {CollectionPage, Offer, SearchResultsPage} from 'schema-dts';
 
 import type {

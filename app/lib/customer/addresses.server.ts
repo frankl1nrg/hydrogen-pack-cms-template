@@ -1,4 +1,4 @@
-import type {ActionFunctionArgs} from '@shopify/remix-oxygen';
+import type {ActionFunctionArgs} from '@remix-run/cloudflare';
 import type {MailingAddress} from '@shopify/hydrogen/storefront-api-types';
 
 import {

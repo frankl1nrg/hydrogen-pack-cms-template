@@ -9,11 +9,13 @@ import {
   createStorefrontClient,
   storefrontRedirect,
 } from '@shopify/hydrogen';
+import {createRequestHandler} from '@remix-run/cloudflare';
 import {
-  createRequestHandler,
-  getStorefrontHeaders,
-} from '@shopify/remix-oxygen';
-import {createPackClient, PackSession, handleRequest} from '@pack/hydrogen';
+  createPackClient,
+  PackSession,
+  handleRequest,
+  PackTestSession,
+} from '@pack/hydrogen';
 
 import {AppSession} from '~/lib/session.server';
 import {getLocaleFromRequest} from '~/lib/server-utils/locale.server';
@@ -22,6 +24,17 @@ import {getOxygenEnv} from '~/lib/server-utils/oxygen.server';
 import {createAdminClient, getAdminHeaders} from '~/lib/admin-api';
 import {CART_FRAGMENT} from '~/data/graphql/storefront/cart';
 import defaultThemeData from '~/config/default-theme-data.json';
+
+// TODO: adapt Shopify's getStorefrontHeaders to Cloudflare's request headers
+const getStorefrontHeaders = (request: Request) => {
+  return {
+    requestGroupId: request.headers.get('request-id'),
+    // Cloudflare worker specific header
+    buyerIp: request.headers.get('cf-connecting-ip'),
+    cookie: request.headers.get('cookie'),
+    purpose: request.headers.get('purpose'),
+  };
+};
 
 /**
  * Export a fetch handler in module format.
@@ -41,10 +54,11 @@ export default {
       }
 
       const waitUntil = (p: Promise<any>) => executionContext.waitUntil(p);
-      const [cache, session, packSession] = await Promise.all([
+      const [cache, session, packSession, testSession] = await Promise.all([
         caches.open('hydrogen'),
         AppSession.init(request, [env.SESSION_SECRET]),
         PackSession.init(request, [env.SESSION_SECRET]),
+        PackTestSession.init(request, [env.SESSION_SECRET]),
       ]);
 
       /**
@@ -123,32 +137,33 @@ export default {
         token: env.PACK_SECRET_TOKEN,
         storeId: env.PACK_STOREFRONT_ID,
         session: packSession,
-        contentEnvironment: env.PUBLIC_PACK_CONTENT_ENVIRONMENT,
+        contentEnvironment: undefined,
         defaultThemeData,
+        testSession,
       });
 
       /**
        * Create a Remix request handler and pass
        * Hydrogen's Storefront client to the loader context.
        */
-      const response = await handleRequest(
-        pack,
-        request,
-        createRequestHandler({
-          build: remixBuild,
-          mode: process.env.NODE_ENV,
-          getLoadContext: () => ({
-            cache,
-            waitUntil,
-            session,
-            storefront,
-            customerAccount,
-            admin,
-            cart,
-            env,
-            oxygen,
-            pack,
-          }),
+      const handleRemixRequest = createRequestHandler(
+        remixBuild,
+        // consider using import.meta.env.MODE
+        process.env.NODE_ENV ?? 'production',
+      );
+
+      const response = await handleRequest(pack, request, (request) =>
+        handleRemixRequest(request, {
+          cache,
+          waitUntil,
+          session,
+          storefront,
+          customerAccount,
+          admin,
+          cart,
+          env,
+          oxygen,
+          pack,
         }),
       );
 

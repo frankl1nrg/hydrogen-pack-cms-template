@@ -1,5 +1,5 @@
-import {data as dataWithOptions} from '@shopify/remix-oxygen';
-import type {LoaderFunctionArgs} from '@shopify/remix-oxygen';
+import {data as dataWithOptions} from '@remix-run/cloudflare';
+import type {LoaderFunctionArgs} from '@remix-run/cloudflare';
 
 import {PRODUCT_ITEM_QUERY_BY_ID} from '~/data/graphql/storefront/product';
 import {ADMIN_PRODUCT_ITEM_BY_ID_QUERY} from '~/data/graphql/admin/product';

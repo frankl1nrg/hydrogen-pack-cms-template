@@ -3,7 +3,7 @@ import {
   type ActionFunction,
   type LoaderFunctionArgs,
   type ActionFunctionArgs,
-} from '@shopify/remix-oxygen';
+} from '@remix-run/cloudflare';
 
 export async function loader({params}: LoaderFunctionArgs) {
   const locale = params.locale;

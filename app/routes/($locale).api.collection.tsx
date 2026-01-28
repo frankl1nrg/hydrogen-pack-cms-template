@@ -1,5 +1,5 @@
 import {getPaginationVariables} from '@shopify/hydrogen';
-import type {LoaderFunctionArgs} from '@shopify/remix-oxygen';
+import type {LoaderFunctionArgs} from '@remix-run/cloudflare';
 import type {ProductCollectionSortKeys} from '@shopify/hydrogen/storefront-api-types';
 
 import {COLLECTION_QUERY} from '~/data/graphql/storefront/collection';

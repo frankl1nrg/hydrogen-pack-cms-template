@@ -1,9 +1,9 @@
 import {useEffect} from 'react';
 import {Outlet, useLoaderData} from '@remix-run/react';
-import {data as dataWithOptions, redirect} from '@shopify/remix-oxygen';
+import {data as dataWithOptions, redirect} from '@remix-run/cloudflare';
 import cookieParser from 'cookie';
 import {useAnalytics} from '@shopify/hydrogen';
-import type {LoaderFunctionArgs} from '@shopify/remix-oxygen';
+import type {LoaderFunctionArgs} from '@remix-run/cloudflare';
 import type {Customer} from '@shopify/hydrogen/customer-account-api-types';
 
 import {AnalyticsEvent} from '~/components/Analytics/constants';

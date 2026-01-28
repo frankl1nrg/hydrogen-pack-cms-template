@@ -1,6 +1,6 @@
 import {parseGid} from '@shopify/hydrogen-react';
 import {XMLBuilder} from 'fast-xml-parser';
-import type {LoaderFunctionArgs} from '@shopify/remix-oxygen';
+import type {LoaderFunctionArgs} from '@remix-run/cloudflare';
 import type {Product} from '@shopify/hydrogen/storefront-api-types';
 
 import {PRODUCT_FEED_QUERY} from '~/data/graphql/storefront/product';

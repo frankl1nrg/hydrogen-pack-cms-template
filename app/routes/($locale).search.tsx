@@ -5,7 +5,7 @@ import {
   getPaginationVariables,
   getSeoMeta,
 } from '@shopify/hydrogen';
-import type {LoaderFunctionArgs, MetaArgs} from '@shopify/remix-oxygen';
+import type {LoaderFunctionArgs, MetaArgs} from '@remix-run/cloudflare';
 import type {
   Collection as CollectionType,
   ProductConnection,

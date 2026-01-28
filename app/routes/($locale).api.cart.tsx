@@ -2,7 +2,7 @@ import {CartForm} from '@shopify/hydrogen';
 import type {
   ActionFunctionArgs,
   LoaderFunctionArgs,
-} from '@shopify/remix-oxygen';
+} from '@remix-run/cloudflare';
 import type {CartQueryDataReturn} from '@shopify/hydrogen';
 import type {Cart} from '@shopify/hydrogen/storefront-api-types';
 

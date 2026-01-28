@@ -4,7 +4,7 @@ import {
   useMatches,
   useRouteError,
 } from '@remix-run/react';
-import {redirect} from '@shopify/remix-oxygen';
+import {redirect} from '@remix-run/cloudflare';
 import type {ShouldRevalidateFunction} from '@remix-run/react';
 import {
   getSeoMeta,
@@ -15,7 +15,7 @@ import type {
   LinksFunction,
   LoaderFunctionArgs,
   MetaArgs,
-} from '@shopify/remix-oxygen';
+} from '@remix-run/cloudflare';
 import type {Shop} from '@shopify/hydrogen/storefront-api-types';
 import type {Customer} from '@shopify/hydrogen/customer-account-api-types';
 

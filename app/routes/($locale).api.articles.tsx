@@ -1,4 +1,4 @@
-import type {LoaderFunctionArgs} from '@shopify/remix-oxygen';
+import type {LoaderFunctionArgs} from '@remix-run/cloudflare';
 
 import {BLOG_PAGE_QUERY} from '~/data/graphql/pack/blog-page';
 import {routeHeaders} from '~/data/cache';

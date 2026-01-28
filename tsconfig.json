@@ -1,8 +1,19 @@
 {
-  "include": ["./**/*.d.ts", "./**/*.ts", "./**/*.tsx"],
-  "exclude": ["node_modules", "dist"],
+  "include": [
+    "./**/*.d.ts",
+    "./**/*.ts",
+    "./**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ],
   "compilerOptions": {
-    "lib": ["DOM", "DOM.Iterable", "ES2022"],
+    "lib": [
+      "DOM",
+      "DOM.Iterable",
+      "ES2022"
+    ],
     "isolatedModules": true,
     "esModuleInterop": true,
     "jsx": "react-jsx",
@@ -17,12 +28,14 @@
     "baseUrl": ".",
     "types": [
       "vite/client",
-      "@shopify/oxygen-workers-types",
+      //"@shopify/oxygen-workers-types",
       "@types/gtag.js",
       "@types/grecaptcha"
     ],
     "paths": {
-      "~/*": ["app/*"]
+      "~/*": [
+        "app/*"
+      ]
     },
     // Remix takes care of building everything in `./app` with `remix build`.
     // Wrangler takes care of building everything in `./worker` with `wrangler start` / `wrangler publish`.

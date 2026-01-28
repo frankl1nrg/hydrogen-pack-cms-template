@@ -1,6 +1,6 @@
 import {AnalyticsPageType, getSeoMeta} from '@shopify/hydrogen';
 import {Outlet} from '@remix-run/react';
-import type {LoaderFunctionArgs, MetaArgs} from '@shopify/remix-oxygen';
+import type {LoaderFunctionArgs, MetaArgs} from '@remix-run/cloudflare';
 
 import {CartPage} from '~/components/Cart';
 import {getShop, getSiteSettings} from '~/lib/server-utils/settings.server';

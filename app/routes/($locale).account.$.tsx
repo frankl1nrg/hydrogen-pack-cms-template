@@ -1,5 +1,5 @@
-import {redirect} from '@shopify/remix-oxygen';
-import type {LoaderFunctionArgs} from '@shopify/remix-oxygen';
+import {redirect} from '@remix-run/cloudflare';
+import type {LoaderFunctionArgs} from '@remix-run/cloudflare';
 
 export async function loader({context, params}: LoaderFunctionArgs) {
   context.customerAccount.handleAuthStatus();

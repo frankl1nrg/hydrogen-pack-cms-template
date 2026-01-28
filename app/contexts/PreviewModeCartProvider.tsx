@@ -19,9 +19,8 @@ export function PreviewModeCartProvider({children}: {children: ReactNode}) {
       <ShopifyProvider
         storeDomain={`https://${ENV.PUBLIC_STORE_DOMAIN}`}
         storefrontToken={ENV.PUBLIC_STOREFRONT_API_TOKEN}
-        storefrontApiVersion={
-          ENV.PUBLIC_STOREFRONT_API_VERSION || DEFAULT_STOREFRONT_API_VERSION
-        }
+        // TODO: remove hardcoded version by removing ShopifyProvider
+        storefrontApiVersion={'2026-01'}
         countryIsoCode={locale.country}
         languageIsoCode={locale.language}
       >

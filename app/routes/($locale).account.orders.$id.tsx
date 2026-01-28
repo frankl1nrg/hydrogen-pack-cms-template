@@ -1,6 +1,6 @@
-import {redirect} from '@shopify/remix-oxygen';
+import {redirect} from '@remix-run/cloudflare';
 import {AnalyticsPageType, getSeoMeta} from '@shopify/hydrogen';
-import type {LoaderFunctionArgs, MetaArgs} from '@shopify/remix-oxygen';
+import type {LoaderFunctionArgs, MetaArgs} from '@remix-run/cloudflare';
 import type {Order as OrderType} from '@shopify/hydrogen/customer-account-api-types';
 
 import {getAccountSeo} from '~/lib/server-utils/seo.server';

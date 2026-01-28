@@ -6,7 +6,7 @@ import {
   storefrontRedirect,
 } from '@shopify/hydrogen';
 import {RenderSections} from '@pack/react';
-import type {LoaderFunctionArgs, MetaArgs} from '@shopify/remix-oxygen';
+import type {LoaderFunctionArgs, MetaArgs} from '@remix-run/cloudflare';
 
 import {ARTICLE_PAGE_QUERY} from '~/data/graphql/pack/article-page';
 import {getPage} from '~/lib/server-utils/pack.server';

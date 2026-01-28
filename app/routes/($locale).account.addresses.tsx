@@ -1,9 +1,9 @@
-import {data as dataWithOptions} from '@shopify/remix-oxygen';
+import {data as dataWithOptions} from '@remix-run/cloudflare';
 import type {
   ActionFunctionArgs,
   LoaderFunctionArgs,
   MetaArgs,
-} from '@shopify/remix-oxygen';
+} from '@remix-run/cloudflare';
 import {AnalyticsPageType, getSeoMeta} from '@shopify/hydrogen';
 
 import {customerAddressesAction} from '~/lib/customer/addresses.server';

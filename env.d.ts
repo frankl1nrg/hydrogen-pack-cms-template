@@ -1,6 +1,3 @@
-/// <reference types="@shopify/remix-oxygen" />
-/// <reference types="@shopify/oxygen-workers-types" />
-
 import type {
   CustomerAccount,
   HydrogenCart,
@@ -36,7 +33,6 @@ declare global {
     PUBLIC_PACK_CONTENT_ENVIRONMENT?: string;
     PUBLIC_STORE_DOMAIN: string;
     PUBLIC_STOREFRONT_API_TOKEN: string;
-    PUBLIC_STOREFRONT_API_VERSION: string;
     PUBLIC_STOREFRONT_ID: string;
     SESSION_SECRET: string;
     SHOP_ID: string;
@@ -69,7 +65,7 @@ declare global {
 /**
  * Declare local additions to `AppLoadContext` to include the session utilities we injected in `server.ts`.
  */
-declare module '@shopify/remix-oxygen' {
+declare module '@remix-run/cloudflare' {
   export interface AppLoadContext {
     session: HydrogenSession;
     storefront: Storefront;

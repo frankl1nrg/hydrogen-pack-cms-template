@@ -1,4 +1,4 @@
-import type {LoaderFunctionArgs} from '@shopify/remix-oxygen';
+import type {LoaderFunctionArgs} from '@remix-run/cloudflare';
 
 import {getSelectedProductOptions} from '~/lib/server-utils/product.server';
 import {PRODUCT_QUERY} from '~/data/graphql/storefront/product';

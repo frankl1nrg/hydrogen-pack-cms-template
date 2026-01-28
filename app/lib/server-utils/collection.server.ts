@@ -1,4 +1,4 @@
-import type {AppLoadContext} from '@shopify/remix-oxygen';
+import type {AppLoadContext} from '@remix-run/cloudflare';
 import type {
   Filter,
   FilterValue,

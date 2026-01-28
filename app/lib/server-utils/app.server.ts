@@ -1,4 +1,4 @@
-import {redirect} from '@shopify/remix-oxygen';
+import {redirect} from '@remix-run/cloudflare';
 
 export const getCookieDomain = (url: string) => {
   try {

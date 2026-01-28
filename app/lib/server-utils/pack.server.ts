@@ -1,4 +1,4 @@
-import type {AppLoadContext} from '@shopify/remix-oxygen';
+import type {AppLoadContext} from '@remix-run/cloudflare';
 
 import {PRODUCT_GROUPINGS_QUERY} from '~/data/graphql/pack/settings';
 import type {Group, Page} from '~/lib/types';

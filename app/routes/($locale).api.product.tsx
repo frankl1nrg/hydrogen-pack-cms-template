@@ -1,4 +1,4 @@
-import type {LoaderFunctionArgs} from '@shopify/remix-oxygen';
+import type {LoaderFunctionArgs} from '@remix-run/cloudflare';
 
 import {getMetafields, normalizeAdminProduct} from '~/lib/utils';
 import {PRODUCT_ITEM_QUERY} from '~/data/graphql/storefront/product';

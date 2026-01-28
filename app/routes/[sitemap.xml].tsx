@@ -1,6 +1,6 @@
 import {getSitemapIndex} from '@shopify/hydrogen';
 import {XMLParser, XMLBuilder} from 'fast-xml-parser';
-import type {LoaderFunctionArgs} from '@shopify/remix-oxygen';
+import type {LoaderFunctionArgs} from '@remix-run/cloudflare';
 
 type SitemapTypes = Parameters<typeof getSitemapIndex>[0]['types'];
 
