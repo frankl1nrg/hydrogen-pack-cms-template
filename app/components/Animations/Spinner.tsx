@@ -41,12 +41,12 @@ export function Spinner({
         style={{borderWidth}}
         role="status"
       >
-        <span className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">
+        <span className="absolute! -m-px! h-px! w-px! overflow-hidden! whitespace-nowrap! border-0! p-0! [clip:rect(0,0,0,0)]!">
           Loading...
         </span>
       </div>
       <div
-        className="absolute inset-0 z-0 inline-block size-full rounded-full border-solid border-current opacity-[25%]"
+        className="absolute inset-0 z-0 inline-block size-full rounded-full border-solid border-current opacity-25"
         style={{borderWidth}}
       />
     </div>

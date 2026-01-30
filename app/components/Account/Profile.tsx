@@ -45,7 +45,7 @@ export function Profile() {
       <h1 className="text-h4 mb-8 md:mb-10">{heading}</h1>
 
       <form
-        className="grid grid-cols-2 gap-3 rounded border border-border p-4 sm:p-6"
+        className="grid grid-cols-2 gap-3 rounded-sm border border-border p-4 sm:p-6"
         ref={formRef}
         onSubmit={updateCustomerDetails}
       >

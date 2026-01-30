@@ -128,7 +128,7 @@ export const FLEX_POSITIONS = {
 export const OBJECT_POSITIONS = {
   mobile: [
     {
-      value: 'object-left-top',
+      value: 'object-top-left',
       label: 'Left Top',
     },
     {
@@ -136,7 +136,7 @@ export const OBJECT_POSITIONS = {
       label: 'Left Center',
     },
     {
-      value: 'object-left-bottom',
+      value: 'object-bottom-left',
       label: 'Left Bottom',
     },
     {
@@ -152,7 +152,7 @@ export const OBJECT_POSITIONS = {
       label: 'Center Bottom',
     },
     {
-      value: 'object-right-top',
+      value: 'object-top-right',
       label: 'Right Top',
     },
     {
@@ -160,13 +160,13 @@ export const OBJECT_POSITIONS = {
       label: 'Right Center',
     },
     {
-      value: 'object-right-bottom',
+      value: 'object-bottom-right',
       label: 'Right Bottom',
     },
   ],
   desktop: [
     {
-      value: 'md:object-left-top',
+      value: 'md:object-top-left',
       label: 'Left Top',
     },
     {
@@ -174,7 +174,7 @@ export const OBJECT_POSITIONS = {
       label: 'Left Center',
     },
     {
-      value: 'md:object-left-bottom',
+      value: 'md:object-bottom-left',
       label: 'Left Bottom',
     },
     {
@@ -190,7 +190,7 @@ export const OBJECT_POSITIONS = {
       label: 'Center Bottom',
     },
     {
-      value: 'md:object-right-top',
+      value: 'md:object-top-right',
       label: 'Right Top',
     },
     {
@@ -198,7 +198,7 @@ export const OBJECT_POSITIONS = {
       label: 'Right Center',
     },
     {
-      value: 'md:object-right-bottom',
+      value: 'md:object-bottom-right',
       label: 'Right Bottom',
     },
   ],

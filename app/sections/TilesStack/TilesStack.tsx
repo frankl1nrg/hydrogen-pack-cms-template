@@ -17,7 +17,7 @@ export function TilesStack({cms}: {cms: TilesStackCms}) {
     alignment = 'text-center items-center',
   } = {...header};
   const {
-    aspectRatio = 'aspect-[5/4]',
+    aspectRatio = 'aspect-5/4',
     textColor = 'var(--text)',
     textAlign = 'text-left items-start',
     tileHeadingSize = 'text-h4',
@@ -25,7 +25,7 @@ export function TilesStack({cms}: {cms: TilesStackCms}) {
   } = {...section};
   const maxWidthClass = fullWidth
     ? 'max-w-none'
-    : 'max-w-[var(--content-max-width)]';
+    : 'max-w-(--content-max-width)';
 
   return (
     <Container container={cms.container}>

@@ -134,7 +134,7 @@ export function HeroContent({
       {isActiveSlide && button?.clickableSlide && (
         <Link
           aria-label={button.buttons?.[0]?.link?.text}
-          className="pointer-events-auto absolute inset-0 z-[1] size-full"
+          className="pointer-events-auto absolute inset-0 z-1 size-full"
           to={button.buttons?.[0]?.link?.url}
           type={button.buttons?.[0]?.link?.type}
         />

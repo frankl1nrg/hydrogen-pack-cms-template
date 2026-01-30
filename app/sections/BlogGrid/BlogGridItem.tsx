@@ -27,7 +27,7 @@ export function BlogGridItem({
   return (
     <div>
       <Link aria-label={article.title} to={url} tabIndex={-1}>
-        <div className="relative mb-4 aspect-[3/2] bg-neutralLightest">
+        <div className="relative mb-4 aspect-3/2 bg-neutralLightest">
           {article.seo?.image && (
             <Image
               data={{

@@ -40,7 +40,7 @@ export function HalfHeroContent({
     <div
       className={clsx(
         'px-contained py-contained w-full',
-        fullBleed ? '' : mediaOrderDesktop === '2' ? 'md:!pl-0' : 'md:!pr-0',
+        fullBleed ? '' : mediaOrderDesktop === '2' ? 'md:pl-0!' : 'md:pr-0!',
       )}
     >
       <div

@@ -12,7 +12,7 @@ export function IconRow({cms}: {cms: IconRowCms}) {
   const {heading, icons, section, subtext} = cms;
   const maxWidthClass = section?.fullWidth
     ? 'max-w-none'
-    : 'max-w-[var(--content-max-width)]';
+    : 'max-w-(--content-max-width)';
 
   return (
     <Container container={cms.container}>
@@ -27,11 +27,11 @@ export function IconRow({cms}: {cms: IconRowCms}) {
           )}
         >
           {heading && (
-            <h2 className="text-h2 mx-auto max-w-[46rem]">{heading}</h2>
+            <h2 className="text-h2 mx-auto max-w-184">{heading}</h2>
           )}
 
           {subtext && (
-            <RichText className="mx-auto max-w-[46rem]">{subtext}</RichText>
+            <RichText className="mx-auto max-w-184">{subtext}</RichText>
           )}
 
           {icons?.length > 0 && (

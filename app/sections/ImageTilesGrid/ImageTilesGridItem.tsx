@@ -23,7 +23,7 @@ const ALIGNMENT_CLASSES: Record<string, {text: string; buttons: string}> = {
 };
 
 export function ImageTilesGridItem({
-  aspectRatio = 'aspect-[1/1]',
+  aspectRatio = 'aspect-square',
   content,
   tile,
 }: ImageTilesGridItemProps) {

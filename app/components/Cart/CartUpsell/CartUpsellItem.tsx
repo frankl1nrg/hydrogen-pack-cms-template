@@ -59,7 +59,7 @@ export const CartUpsellItem = memo(
           />
         </Link>
 
-        <div className="flex max-w-[25rem] flex-1 flex-col gap-2">
+        <div className="flex max-w-100 flex-1 flex-col gap-2">
           <Link
             aria-label={product.title}
             className="self-start"

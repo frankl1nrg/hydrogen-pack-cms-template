@@ -24,7 +24,7 @@ export function CartPage() {
       className="md:px-contained py-contained"
       data-comp={CartPage.displayName}
     >
-      <div className="mx-auto max-w-screen-xl">
+      <div className="mx-auto max-w-(--breakpoint-xl)">
         <h1 className="text-h2 mb-4 px-4">{heading || 'My Cart'}</h1>
 
         <div
@@ -39,7 +39,7 @@ export function CartPage() {
             <ul
               className={clsx(
                 'relative border-y border-border',
-                !hasCartLines && 'min-h-80 py-12 md:min-h-[30rem]',
+                !hasCartLines && 'min-h-80 py-12 md:min-h-120',
               )}
             >
               {hasCartLines ? (
@@ -61,15 +61,15 @@ export function CartPage() {
 
           {hasCartLines && (
             <div className="flex flex-col overflow-hidden md:gap-4">
-              <div className="[&>div]:max-md:border-t-0 [&>div]:md:rounded [&>div]:md:border [&>div]:md:border-border">
+              <div className="max-md:[&>div]:border-t-0 md:[&>div]:rounded-sm md:[&>div]:border md:[&>div]:border-border">
                 <CartTotals settings={cartSettings} />
               </div>
 
-              <div className="[&>div]:border-b-0 [&>div]:border-t [&>div]:border-border [&>div]:md:rounded [&>div]:md:border">
+              <div className="[&>div]:border-b-0 [&>div]:border-t [&>div]:border-border md:[&>div]:rounded-sm md:[&>div]:border">
                 <FreeShippingMeter settings={cartSettings} />
               </div>
 
-              <div className="[&>div]:border-border [&>div]:md:rounded [&>div]:md:border">
+              <div className="[&>div]:border-border md:[&>div]:rounded-sm md:[&>div]:border">
                 <CartUpsell settings={cartSettings} />
               </div>
             </div>

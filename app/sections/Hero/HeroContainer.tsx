@@ -2,11 +2,11 @@ import clsx from 'clsx';
 
 import type {HeroContainerProps} from './Hero.types';
 
-const FALLBACK_DESKTOP_HEIGHT_CLASS = 'md:h-[43.75rem]';
+const FALLBACK_DESKTOP_HEIGHT_CLASS = 'md:h-175';
 const FALLBACK_DESKTOP_ASPECT_RATIO_CLASS = 'md:aspect-ratio[16/9]';
 const FALLBACK_DESKTOP_ASPECT_RATIO = '16 / 9';
-const FALLBACK_MOBILE_HEIGHT_CLASS = 'max-md:h-[31.25rem]';
-const FALLBACK_MOBILE_ASPECT_RATIO_CLASS = 'max-md:aspect-[3/4]';
+const FALLBACK_MOBILE_HEIGHT_CLASS = 'max-md:h-125';
+const FALLBACK_MOBILE_ASPECT_RATIO_CLASS = 'max-md:aspect-3/4';
 const FALLBACK_MOBILE_ASPECT_RATIO = '3 / 4';
 
 export function HeroContainer({children, cms, sectionId}: HeroContainerProps) {
@@ -14,7 +14,7 @@ export function HeroContainer({children, cms, sectionId}: HeroContainerProps) {
 
   const maxWidthContainerClass = section?.fullWidth
     ? 'max-w-none'
-    : 'max-w-[var(--content-max-width)]';
+    : 'max-w-(--content-max-width)';
   const fullBleedClass = section?.fullBleed ? '' : 'px-contained';
 
   const desktopIsAspectRatioType =

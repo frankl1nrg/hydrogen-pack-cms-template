@@ -114,7 +114,7 @@ export function BuildYourOwnBundle({cms}: {cms: BuildYourOwnBundleCms}) {
          * also change corresponding breakpoint max width in BYOBSubnav, e.g. md:max-w-[calc(100vw-360px)] */
         className="w-full max-md:flex max-md:flex-col md:grid md:grid-cols-[1fr_360px] xl:grid-cols-[1fr_480px]"
       >
-        <div className="order-1 max-md:sticky max-md:top-[var(--header-height-mobile)] max-md:z-[2] md:hidden">
+        <div className="order-1 max-md:sticky max-md:top-(--header-height-mobile) max-md:z-2 md:hidden">
           {hasProductGroupings && (
             <BYOBSubnav
               activeTabIndex={activeTabIndex}
@@ -135,7 +135,7 @@ export function BuildYourOwnBundle({cms}: {cms: BuildYourOwnBundleCms}) {
               activeTabIndex={activeTabIndex}
               productGroupings={productGroupings}
               setActiveTabIndex={setActiveTabIndex}
-              className="max-md:hidden md:sticky md:top-[var(--header-height-desktop)]"
+              className="max-md:hidden md:sticky md:top-(--header-height-desktop)"
             />
           )}
 
@@ -176,7 +176,7 @@ export function BuildYourOwnBundle({cms}: {cms: BuildYourOwnBundleCms}) {
           })}
         </div>
 
-        <div className="max-md:sticky max-md:top-[calc(var(--header-height-mobile)+var(--byob-subnav-height))] max-md:z-[1] max-md:order-2">
+        <div className="max-md:sticky max-md:top-[calc(var(--header-height-mobile)+var(--byob-subnav-height))] max-md:z-1 max-md:order-2">
           <BYOBSummary
             bundle={bundle}
             tiers={tiers}

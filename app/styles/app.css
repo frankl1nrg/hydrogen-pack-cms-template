@@ -1,78 +1,594 @@
-@import 'fonts';
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import './fonts.css' layer(base);
+@import 'tailwindcss';
 
-/* Global variables. */
-:root {
-  /* If a below css var needs to be deleted or renamed, first search the codebase where that css var may be hardcoded and update accordingly */
+@plugin '@headlessui/tailwindcss';
 
-  /* Css variable colors */
-  --background: #ffffff;
-  --text: #000000;
-  --border: #e8e8e8;
+@theme {
+  --breakpoint-*: initial;
+  --breakpoint-xs: 30rem;
+  --breakpoint-sm: 40rem;
+  --breakpoint-md: 48rem;
+  --breakpoint-lg: 64rem;
+  --breakpoint-xl: 80rem;
+  --breakpoint-2xl: 96rem;
 
-  --primary: #008464;
-  --secondary: #8164bf;
-  --accent1: #189cc5;
-  --accent2: #4a69d4;
+  --text-*: initial;
+  --text-2xs: 0.625rem;
+  --text-2xs--line-height: 1rem;
+  --text-xs: 0.75rem;
+  --text-xs--line-height: 1rem;
+  --text-sm: 0.875rem;
+  --text-sm--line-height: 1.25rem;
+  --text-base: 1rem;
+  --text-base--line-height: 1.5rem;
+  --text-lg: 1.125rem;
+  --text-lg--line-height: 1.75rem;
+  --text-xl: 1.25rem;
+  --text-xl--line-height: 1.75rem;
+  --text-2xl: 1.5rem;
+  --text-2xl--line-height: 2rem;
+  --text-3xl: 1.875rem;
+  --text-3xl--line-height: 2.25rem;
+  --text-4xl: 2.25rem;
+  --text-4xl--line-height: 2.5rem;
+  --text-5xl: 3rem;
+  --text-5xl--line-height: 1.25;
+  --text-6xl: 3.75rem;
+  --text-6xl--line-height: 1.25;
+  --text-7xl: 4.5rem;
+  --text-7xl--line-height: 1.25;
+  --text-8xl: 6rem;
+  --text-8xl--line-height: 1.25;
+  --text-9xl: 8rem;
+  --text-9xl--line-height: 1.25;
 
-  --black: #000000;
-  --neutral-darkest: #171717;
-  --neutral-darker: #404040;
-  --neutral-dark: #525252;
-  --neutral-medium: #737373;
-  --neutral-light: #a3a3a3;
-  --neutral-lighter: #d4d4d4;
-  --neutral-lightest: #f9f9f9;
-  --white: #ffffff;
-  --overlay: rgba(0, 0, 0, 0.3);
+  --font-sans: Poppins, sans-serif;
+  --font-heading: Poppins, sans-serif;
 
-  --primary-btn-bg-color: #008464;
-  --primary-btn-border-color: #008464;
-  --primary-btn-text-color: #ffffff;
-  --primary-btn-hover-bg-color: #00694f;
-  --primary-btn-hover-border-color: #00694f;
-  --primary-btn-hover-text-color: #ffffff;
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-accent1: var(--accent1);
+  --color-accent2: var(--accent2);
+  --color-black: var(--black);
+  --color-neutralDarkest: var(--neutral-darkest);
+  --color-neutralDarker: var(--neutral-darker);
+  --color-neutralDark: var(--neutral-dark);
+  --color-neutralMedium: var(--neutral-medium);
+  --color-neutralLight: var(--neutral-light);
+  --color-neutralLighter: var(--neutral-lighter);
+  --color-neutralLightest: var(--neutral-lightest);
+  --color-white: var(--white);
+  --color-text: var(--text);
+  --color-background: var(--background);
+  --color-border: var(--border);
+  --color-overlay: var(--overlay);
 
-  --secondary-btn-bg-color: #ffffff;
-  --secondary-btn-border-color: #ffffff;
-  --secondary-btn-text-color: #008464;
-  --secondary-btn-hover-bg-color: #008464;
-  --secondary-btn-hover-border-color: #008464;
-  --secondary-btn-hover-text-color: #ffffff;
+  --animate-spin-fast: spin 0.75s linear infinite;
+  --animate-bounce-high: bounce-high 0.75s infinite;
+  --animate-flash: flash 1.5s infinite;
 
-  --inverse-light-btn-bg-color: transparent;
-  --inverse-light-btn-border-color: #ffffff;
-  --inverse-light-btn-text-color: #ffffff;
-  --inverse-light-btn-hover-bg-color: #ffffff;
-  --inverse-light-btn-hover-border-color: #ffffff;
-  --inverse-light-btn-hover-text-color: #000000;
+  @keyframes bounce-high {
+    0%,
+    100% {
+      transform: translateY(-50%);
+      animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+    }
+    50% {
+      transform: translateY(0);
+      animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+    }
+  }
+  @keyframes flash {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.1;
+    }
+  }
+  @keyframes shimmer {
+    100% {
+      transform: translateX(100%);
+    }
+  }
+}
 
-  --inverse-dark-btn-bg-color: transparent;
-  --inverse-dark-btn-border-color: #000000;
-  --inverse-dark-btn-text-color: #000000;
-  --inverse-dark-btn-hover-bg-color: #000000;
-  --inverse-dark-btn-hover-border-color: #000000;
-  --inverse-dark-btn-hover-text-color: #ffffff;
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
 
-  /* Breakpoints */
-  --xs: 480px;
-  --sm: 640px;
-  --md: 768px;
-  --lg: 1024px;
-  --xl: 1280px;
-  --2xl: 1536px;
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
 
-  /* Constants */
-  --header-height-mobile: 4.5rem;
-  --header-height-desktop: 4.5rem;
-  --promobar-height-mobile: 3rem; /* Ensure this is equivalent to PROMOBAR_HEIGHT_MOBILE in /lib/constants.ts */
-  --promobar-height-desktop: 3rem; /* Ensure this is equivalent to PROMOBAR_HEIGHT_DESKTOP in /lib/constants.ts */
-  --drawer-width: 23.5rem;
-  --content-max-width: 96rem;
-  /* Ensure updating this ratio as needed.  */
-  --product-image-aspect-ratio: 3 / 4; /* Ensure this is equivalent to PRODUCT_IMAGE_ASPECT_RATIO in /lib/constants.ts */
+@utility text-h1 {
+  /* text specific */
+  @apply overflow-anywhere
+      font-heading
+      text-4xl
+      font-bold
+      md:text-5xl
+      xl:text-6xl;
+}
+
+@utility text-h2 {
+  @apply overflow-anywhere
+      font-heading
+      text-3xl
+      font-bold
+      md:text-4xl
+      xl:text-5xl;
+}
+
+@utility text-h3 {
+  @apply overflow-anywhere
+      font-heading
+      text-2xl
+      font-bold
+      md:text-3xl
+      xl:text-4xl;
+}
+
+@utility text-h4 {
+  @apply overflow-anywhere
+      font-heading
+      text-xl
+      font-bold
+      md:text-2xl
+      xl:text-3xl;
+}
+
+@utility text-h5 {
+  @apply overflow-anywhere
+      font-heading
+      text-base
+      font-bold
+      md:text-lg;
+}
+
+@utility text-h6 {
+  @apply overflow-anywhere
+      font-heading
+      text-sm
+      font-bold;
+}
+
+@utility text-body {
+  @apply font-sans
+      text-base
+      font-normal;
+}
+
+@utility text-body-sm {
+  @apply font-sans
+      text-xs
+      font-normal;
+}
+
+@utility text-body-lg {
+  @apply font-sans
+      text-lg
+      font-normal;
+}
+
+@utility text-link {
+  @apply text-body
+      font-bold
+      uppercase
+      underline;
+}
+
+@utility text-link-sm {
+  @apply text-link
+      text-xs
+      underline-offset-4;
+}
+
+@utility text-caption {
+  @apply font-sans
+      text-sm
+      font-bold
+      uppercase;
+}
+
+@utility text-label {
+  @apply font-sans
+      text-xs
+      font-normal
+      uppercase
+      tracking-wide;
+}
+
+@utility text-label-sm {
+  @apply font-sans
+      text-2xs
+      font-normal
+      uppercase
+      tracking-wide;
+}
+
+@utility text-nav {
+  @apply font-sans
+      text-sm
+      font-bold
+      uppercase
+      tracking-wide;
+}
+
+@utility text-superheading {
+  @apply font-sans
+      text-xs
+      font-normal
+      uppercase
+      tracking-wide
+      lg:text-sm;
+}
+
+@utility btn-text {
+  /* button specific */
+  @apply font-sans
+      text-base
+      font-bold
+      uppercase
+      tracking-wider;
+}
+
+@utility btn {
+  @apply btn-text
+      relative
+      m-0
+      inline-flex
+      h-12.5
+      items-center
+      justify-center
+      overflow-hidden
+      whitespace-nowrap
+      rounded-sm
+      border
+      border-solid
+      px-5
+      py-3
+      text-center
+      transition-colors
+      disabled:cursor-not-allowed
+      disabled:border-border
+      disabled:bg-neutralLighter
+      disabled:text-neutralMedium
+      disabled:hover:border-border
+      disabled:hover:bg-neutralLighter
+      disabled:hover:text-neutralMedium
+      [&>p]:truncate;
+}
+
+@utility btn-primary {
+  @apply btn
+      border-(--primary-btn-border-color)
+      bg-(--primary-btn-bg-color)
+      text-(--primary-btn-text-color)
+      md:hover:border-(--primary-btn-hover-border-color)
+      md:hover:bg-(--primary-btn-hover-bg-color)
+      md:hover:text-(--primary-btn-hover-text-color);
+}
+
+@utility btn-secondary {
+  @apply btn
+      border-(--secondary-btn-border-color)
+      bg-(--secondary-btn-bg-color)
+      text-(--secondary-btn-text-color)
+      md:hover:border-(--secondary-btn-hover-border-color)
+      md:hover:bg-(--secondary-btn-hover-bg-color)
+      md:hover:text-(--secondary-btn-hover-text-color);
+}
+
+@utility btn-inverse-light {
+  @apply btn
+      border-(--inverse-light-btn-border-color)
+      bg-(--inverse-light-btn-bg-color)
+      text-(--inverse-light-btn-text-color)
+      md:hover:border-(--inverse-light-btn-hover-border-color)
+      md:hover:bg-(--inverse-light-btn-hover-bg-color)
+      md:hover:text-(--inverse-light-btn-hover-text-color);
+}
+
+@utility btn-inverse-dark {
+  @apply btn
+      border-(--inverse-dark-btn-border-color)
+      bg-(--inverse-dark-btn-bg-color)
+      text-(--inverse-dark-btn-text-color)
+      md:hover:border-(--inverse-dark-btn-hover-border-color)
+      md:hover:bg-(--inverse-dark-btn-hover-bg-color)
+      md:hover:text-(--inverse-dark-btn-hover-text-color);
+}
+
+@utility btn-select {
+  @apply relative flex h-12 items-center justify-center overflow-hidden rounded-sm border border-border bg-white px-5 py-3 text-sm text-text transition md:hover:bg-neutralLightest;
+}
+
+@utility hover-text-underline {
+  /* underline specific */
+  @apply relative
+      inline
+      bg-[linear-gradient(currentColor,currentColor)]
+      bg-size-[0%_1px]
+      bg-bottom-left
+      bg-no-repeat
+      transition-[background-size]
+      duration-200
+      focus:bg-size-[100%_1px]
+      md:hover:bg-size-[100%_1px];
+}
+
+@utility text-underline {
+  @apply relative
+      inline
+      bg-[linear-gradient(currentColor,currentColor)]
+      bg-size-[100%_1px]
+      bg-bottom-right
+      bg-no-repeat
+      transition-[background-size]
+      duration-200
+      focus:bg-size-[0%_1px]
+      md:hover:bg-size-[0%_1px];
+}
+
+@utility text-main-underline {
+  @apply relative
+      inline
+      bg-[linear-gradient(currentColor,currentColor)]
+      bg-size-[100%_2px]
+      bg-bottom-right
+      bg-no-repeat
+      pb-px
+      transition-[background-size]
+      duration-200
+      focus:bg-size-[0%_2px]
+      md:hover:bg-size-[0%_2px];
+}
+
+@utility input-text {
+  /* inputs specific */
+  @apply h-12
+      w-full
+      rounded-sm
+      border
+      border-border
+      px-3.5
+      py-2.5
+      text-base;
+}
+
+@utility input-label {
+  @apply block
+      pb-1
+      pl-0
+      font-sans
+      text-sm
+      font-bold;
+}
+
+@utility swiper-wrapper-center {
+  /* swiper specific */
+  & .swiper-wrapper {
+    @apply flex
+      items-center;
+  }
+}
+
+@utility swiper-wrapper {
+  /* swiper specific */
+  .swiper-wrapper-center & {
+    @apply flex
+      items-center;
+  }
+}
+
+@utility swiper-offset-gradient-270-left {
+  @apply before:pointer-events-none before:absolute before:bottom-0 before:left-[-8px] before:top-0 before:z-10 before:h-full before:w-23.75 before:-rotate-180 before:opacity-[60] lg:before:w-32.5 before:bg-[linear-gradient(270deg,var(--background)_0%,rgba(255,255,255,0)_100%)];
+}
+
+@utility swiper-offset-gradient-270-right {
+  @apply after:pointer-events-none after:absolute after:bottom-0 after:right-[-8px] after:top-0 after:z-10 after:h-full after:w-23.75 after:opacity-[60] lg:after:w-32.5 after:bg-[linear-gradient(270deg,var(--background)_0%,rgba(255,255,255,0)_100%)];
+}
+
+@utility active-bullet-black {
+  & .swiper-pagination-bullet-active {
+    @apply bg-black;
+  }
+}
+
+@utility swiper-pagination-bullet-active {
+  .active-bullet-black & {
+    @apply bg-black;
+  }
+}
+
+@utility loading-shimmer {
+  @apply pointer-events-none absolute inset-0 -translate-x-full animate-[shimmer_1.5s_infinite] bg-linear-to-r from-transparent via-neutralLighter to-transparent opacity-20;
+}
+
+@utility range-thumb {
+  /* multi-range slider style */
+  @apply pointer-events-none absolute h-0 w-full;
+  -webkit-appearance: none;
+  -webkit-tap-highlight-color: transparent;
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+  /* For Chrome browsers */
+  &::-webkit-slider-thumb {
+    @apply pointer-events-auto relative mt-[4px] h-3 w-3 cursor-pointer rounded-full border-none bg-neutralLightest shadow-[0_0_1px_1px_#ced4da];
+  }
+  /* For Firefox browsers */
+  &::-moz-range-thumb {
+    @apply pointer-events-auto relative mt-[4px] h-3 w-3 cursor-pointer rounded-full border-none bg-neutralLightest shadow-[0_0_1px_1px_#ced4da];
+  }
+}
+
+@utility shoppable-video-hero-container {
+  /* Shoppable social video */
+  container-type: size;
+  container-name: shoppable-video-hero-container;
+  width: 100%;
+}
+
+@utility video-ratio {
+  @container shoppable-video-hero-container (min-height: 600px) {
+    aspect-ratio: 9 / 16;
+  }
+  @container shoppable-video-hero-container (max-height: 599px) {
+    width: 100%;
+    height: auto;
+    aspect-ratio: unset;
+    & video {
+      object-position: top;
+    }
+  }
+  @container shoppable-video-hero-container (max-width: 767px) {
+    width: 100%;
+    height: auto;
+    aspect-ratio: unset;
+    & video {
+      object-position: top;
+    }
+  }
+}
+
+@utility scrollbar-hide {
+  /* hide scrollbar */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@utility px-contained {
+  /* horizontal padding */
+  @apply px-4
+      md:px-8
+      xl:px-12;
+}
+
+@utility py-contained {
+  /* vertical padding */
+  @apply py-8
+      md:py-10
+      xl:py-12;
+}
+
+@utility pt-contained {
+  @apply pt-8
+      md:pt-10
+      xl:pt-12;
+}
+
+@utility pb-contained {
+  @apply pb-8
+      md:pb-10
+      xl:pb-12;
+}
+
+@utility overflow-anywhere {
+  overflow-wrap: anywhere;
+}
+
+@utility media-fill {
+  @apply size-full
+      object-cover;
+}
+
+@utility absolute-center {
+  @apply absolute
+      left-1/2
+      top-1/2
+      -translate-x-1/2
+      -translate-y-1/2;
+}
+
+@layer utilities {
+  /* Global variables. */
+  :root {
+    /* If a below css var needs to be deleted or renamed, first search the codebase where that css var may be hardcoded and update accordingly */
+
+    /* Css variable colors */
+    --background: #ffffff;
+    --text: #000000;
+    --border: #e8e8e8;
+
+    --primary: #008464;
+    --secondary: #8164bf;
+    --accent1: #189cc5;
+    --accent2: #4a69d4;
+
+    --black: #000000;
+    --neutral-darkest: #171717;
+    --neutral-darker: #404040;
+    --neutral-dark: #525252;
+    --neutral-medium: #737373;
+    --neutral-light: #a3a3a3;
+    --neutral-lighter: #d4d4d4;
+    --neutral-lightest: #f9f9f9;
+    --white: #ffffff;
+    --overlay: rgba(0, 0, 0, 0.3);
+
+    --primary-btn-bg-color: #008464;
+    --primary-btn-border-color: #008464;
+    --primary-btn-text-color: #ffffff;
+    --primary-btn-hover-bg-color: #00694f;
+    --primary-btn-hover-border-color: #00694f;
+    --primary-btn-hover-text-color: #ffffff;
+
+    --secondary-btn-bg-color: #ffffff;
+    --secondary-btn-border-color: #ffffff;
+    --secondary-btn-text-color: #008464;
+    --secondary-btn-hover-bg-color: #008464;
+    --secondary-btn-hover-border-color: #008464;
+    --secondary-btn-hover-text-color: #ffffff;
+
+    --inverse-light-btn-bg-color: transparent;
+    --inverse-light-btn-border-color: #ffffff;
+    --inverse-light-btn-text-color: #ffffff;
+    --inverse-light-btn-hover-bg-color: #ffffff;
+    --inverse-light-btn-hover-border-color: #ffffff;
+    --inverse-light-btn-hover-text-color: #000000;
+
+    --inverse-dark-btn-bg-color: transparent;
+    --inverse-dark-btn-border-color: #000000;
+    --inverse-dark-btn-text-color: #000000;
+    --inverse-dark-btn-hover-bg-color: #000000;
+    --inverse-dark-btn-hover-border-color: #000000;
+    --inverse-dark-btn-hover-text-color: #ffffff;
+
+    /* Breakpoints */
+    --xs: 480px;
+    --sm: 640px;
+    --md: 768px;
+    --lg: 1024px;
+    --xl: 1280px;
+    --2xl: 1536px;
+
+    /* Constants */
+    --header-height-mobile: 4.5rem;
+    --header-height-desktop: 4.5rem;
+    --promobar-height-mobile: 3rem; /* Ensure this is equivalent to PROMOBAR_HEIGHT_MOBILE in /lib/constants.ts */
+    --promobar-height-desktop: 3rem; /* Ensure this is equivalent to PROMOBAR_HEIGHT_DESKTOP in /lib/constants.ts */
+    --drawer-width: 23.5rem;
+    --content-max-width: 96rem;
+    /* Ensure updating this ratio as needed.  */
+    --product-image-aspect-ratio: 3 / 4; /* Ensure this is equivalent to PRODUCT_IMAGE_ASPECT_RATIO in /lib/constants.ts */
+  }
 }
 
 @layer base {
@@ -85,7 +601,7 @@
   }
 
   body {
-    @apply text-body m-0 flex min-h-[var(--viewport-height)] w-full flex-col bg-background text-text;
+    @apply text-body m-0 flex min-h-(--viewport-height) w-full flex-col bg-background text-text;
   }
 
   main {
@@ -123,357 +639,5 @@
   }
   input[type='number'] {
     -moz-appearance: textfield;
-  }
-}
-
-@layer components {
-  /* text specific */
-  .text-h1 {
-    @apply overflow-anywhere
-      font-heading
-      text-4xl
-      font-bold
-      md:text-5xl
-      xl:text-6xl;
-  }
-  .text-h2 {
-    @apply overflow-anywhere
-      font-heading
-      text-3xl
-      font-bold
-      md:text-4xl
-      xl:text-5xl;
-  }
-  .text-h3 {
-    @apply overflow-anywhere
-      font-heading
-      text-2xl
-      font-bold
-      md:text-3xl
-      xl:text-4xl;
-  }
-  .text-h4 {
-    @apply overflow-anywhere
-      font-heading
-      text-xl
-      font-bold
-      md:text-2xl
-      xl:text-3xl;
-  }
-  .text-h5 {
-    @apply overflow-anywhere
-      font-heading
-      text-base
-      font-bold
-      md:text-lg;
-  }
-  .text-h6 {
-    @apply overflow-anywhere
-      font-heading
-      text-sm
-      font-bold;
-  }
-  .text-body {
-    @apply font-sans
-      text-base
-      font-normal;
-  }
-  .text-body-sm {
-    @apply font-sans
-      text-xs
-      font-normal;
-  }
-  .text-body-lg {
-    @apply font-sans
-      text-lg
-      font-normal;
-  }
-  .text-link {
-    @apply text-body
-      font-bold
-      uppercase
-      underline;
-  }
-  .text-link-sm {
-    @apply text-link
-      text-xs
-      underline-offset-4;
-  }
-  .text-caption {
-    @apply font-sans
-      text-sm
-      font-bold
-      uppercase;
-  }
-  .text-label {
-    @apply font-sans
-      text-xs
-      font-normal
-      uppercase
-      tracking-wide;
-  }
-  .text-label-sm {
-    @apply font-sans
-      text-2xs
-      font-normal
-      uppercase
-      tracking-wide;
-  }
-  .text-nav {
-    @apply font-sans
-      text-sm
-      font-bold
-      uppercase
-      tracking-wide;
-  }
-  .text-superheading {
-    @apply font-sans
-      text-xs
-      font-normal
-      uppercase
-      tracking-wide
-      lg:text-sm;
-  }
-  /* button specific */
-  .btn-text {
-    @apply font-sans
-      text-base
-      font-bold
-      uppercase
-      tracking-wider;
-  }
-  .btn {
-    @apply btn-text
-      relative
-      m-0
-      inline-flex
-      h-[3.125rem]
-      items-center
-      justify-center
-      overflow-hidden
-      whitespace-nowrap
-      rounded
-      border
-      border-solid
-      px-5
-      py-3
-      text-center
-      transition-colors
-      disabled:cursor-not-allowed
-      disabled:border-border
-      disabled:bg-neutralLighter
-      disabled:text-neutralMedium
-      disabled:hover:border-border
-      disabled:hover:bg-neutralLighter
-      disabled:hover:text-neutralMedium
-      [&>p]:truncate;
-  }
-  .btn-primary {
-    @apply btn
-      border-[var(--primary-btn-border-color)]
-      bg-[var(--primary-btn-bg-color)]
-      text-[var(--primary-btn-text-color)]
-      md:hover:border-[var(--primary-btn-hover-border-color)]
-      md:hover:bg-[var(--primary-btn-hover-bg-color)]
-      md:hover:text-[var(--primary-btn-hover-text-color)];
-  }
-  .btn-secondary {
-    @apply btn
-      border-[var(--secondary-btn-border-color)]
-      bg-[var(--secondary-btn-bg-color)]
-      text-[var(--secondary-btn-text-color)]
-      md:hover:border-[var(--secondary-btn-hover-border-color)]
-      md:hover:bg-[var(--secondary-btn-hover-bg-color)]
-      md:hover:text-[var(--secondary-btn-hover-text-color)];
-  }
-  .btn-inverse-light {
-    @apply btn
-      border-[var(--inverse-light-btn-border-color)]
-      bg-[var(--inverse-light-btn-bg-color)]
-      text-[var(--inverse-light-btn-text-color)]
-      md:hover:border-[var(--inverse-light-btn-hover-border-color)]
-      md:hover:bg-[var(--inverse-light-btn-hover-bg-color)]
-      md:hover:text-[var(--inverse-light-btn-hover-text-color)];
-  }
-  .btn-inverse-dark {
-    @apply btn
-      border-[var(--inverse-dark-btn-border-color)]
-      bg-[var(--inverse-dark-btn-bg-color)]
-      text-[var(--inverse-dark-btn-text-color)]
-      md:hover:border-[var(--inverse-dark-btn-hover-border-color)]
-      md:hover:bg-[var(--inverse-dark-btn-hover-bg-color)]
-      md:hover:text-[var(--inverse-dark-btn-hover-text-color)];
-  }
-  .btn-select {
-    @apply relative flex h-12 items-center justify-center overflow-hidden rounded border border-border bg-white px-5 py-3 text-sm text-text transition md:hover:bg-neutralLightest;
-  }
-  /* underline specific */
-  .hover-text-underline {
-    @apply relative
-      inline
-      bg-[linear-gradient(currentColor,currentColor)]
-      bg-[length:0%_1px]
-      bg-left-bottom
-      bg-no-repeat
-      transition-[background-size]
-      duration-200
-      focus:bg-[length:100%_1px]
-      md:hover:bg-[length:100%_1px];
-  }
-  .text-underline {
-    @apply relative
-      inline
-      bg-[linear-gradient(currentColor,currentColor)]
-      bg-[length:100%_1px]
-      bg-right-bottom
-      bg-no-repeat
-      transition-[background-size]
-      duration-200
-      focus:bg-[length:0%_1px]
-      md:hover:bg-[length:0%_1px];
-  }
-  .text-main-underline {
-    @apply relative
-      inline
-      bg-[linear-gradient(currentColor,currentColor)]
-      bg-[length:100%_2px]
-      bg-right-bottom
-      bg-no-repeat
-      pb-px
-      transition-[background-size]
-      duration-200
-      focus:bg-[length:0%_2px]
-      md:hover:bg-[length:0%_2px];
-  }
-  /* inputs specific */
-  .input-text {
-    @apply h-12
-      w-full
-      rounded
-      border
-      border-border
-      px-3.5
-      py-2.5
-      text-base;
-  }
-  .input-label {
-    @apply block
-      pb-1
-      pl-0
-      font-sans
-      text-sm
-      font-bold;
-  }
-  /* swiper specific */
-  .swiper-wrapper-center .swiper-wrapper {
-    @apply flex
-      items-center;
-  }
-  .swiper-offset-gradient-270-left {
-    @apply before:pointer-events-none before:absolute before:bottom-0 before:left-[-8px] before:top-0 before:z-10 before:h-full before:w-[5.9375rem] before:-rotate-180 before:opacity-[60] before:lg:w-[8.125rem] before:bg-[linear-gradient(270deg,var(--background)_0%,rgba(255,255,255,0)_100%)];
-  }
-  .swiper-offset-gradient-270-right {
-    @apply after:pointer-events-none after:absolute after:bottom-0 after:right-[-8px] after:top-0 after:z-10 after:h-full after:w-[5.9375rem] after:opacity-[60] after:lg:w-[8.125rem] after:bg-[linear-gradient(270deg,var(--background)_0%,rgba(255,255,255,0)_100%)];
-  }
-  .active-bullet-black .swiper-pagination-bullet-active {
-    @apply bg-black;
-  }
-  .loading-shimmer {
-    @apply pointer-events-none absolute inset-0 -translate-x-full animate-[shimmer_1.5s_infinite] bg-gradient-to-r from-transparent via-neutralLighter to-transparent opacity-20;
-  }
-  /* multi-range slider style */
-  .range-thumb {
-    @apply pointer-events-none absolute h-0 w-full;
-  }
-  .range-thumb,
-  .range-thumb::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    -webkit-tap-highlight-color: transparent;
-  }
-  /* For Chrome browsers */
-  .range-thumb::-webkit-slider-thumb {
-    @apply pointer-events-auto relative mt-[4px] h-3 w-3 cursor-pointer rounded-full border-none bg-neutralLightest shadow-[0_0_1px_1px_#ced4da];
-  }
-  /* For Firefox browsers */
-  .range-thumb::-moz-range-thumb {
-    @apply pointer-events-auto relative mt-[4px] h-3 w-3 cursor-pointer rounded-full border-none bg-neutralLightest shadow-[0_0_1px_1px_#ced4da];
-  }
-  /* Shoppable social video */
-  .shoppable-video-hero-container {
-    container-type: size;
-    container-name: shoppable-video-hero-container;
-    width: 100%;
-  }
-  @container shoppable-video-hero-container (min-height: 600px) {
-    .video-ratio {
-      aspect-ratio: 9 / 16;
-    }
-  }
-  @container shoppable-video-hero-container (max-height: 599px) {
-    .video-ratio {
-      width: 100%;
-      height: auto;
-      aspect-ratio: unset;
-    }
-    .video-ratio video {
-      object-position: top;
-    }
-  }
-  @container shoppable-video-hero-container (max-width: 767px) {
-    .video-ratio {
-      width: 100%;
-      height: auto;
-      aspect-ratio: unset;
-    }
-    .video-ratio video {
-      object-position: top;
-    }
-  }
-}
-
-@layer utilities {
-  /* hide scrollbar */
-  .scrollbar-hide {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-  .scrollbar-hide::-webkit-scrollbar {
-    display: none;
-  }
-  /* horizontal padding */
-  .px-contained {
-    @apply px-4
-      md:px-8
-      xl:px-12;
-  }
-  /* vertical padding */
-  .py-contained {
-    @apply py-8
-      md:py-10
-      xl:py-12;
-  }
-  .pt-contained {
-    @apply pt-8
-      md:pt-10
-      xl:pt-12;
-  }
-  .pb-contained {
-    @apply pb-8
-      md:pb-10
-      xl:pb-12;
-  }
-  .overflow-anywhere {
-    overflow-wrap: anywhere;
-  }
-  .media-fill {
-    @apply size-full
-      object-cover;
-  }
-  .absolute-center {
-    @apply absolute
-      left-1/2
-      top-1/2
-      -translate-x-1/2
-      -translate-y-1/2;
   }
 }

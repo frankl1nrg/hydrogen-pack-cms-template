@@ -59,7 +59,7 @@ export function HeroSlider({
         );
       })}
 
-      <div className={clsx('swiper-pagination', !pagination && '!hidden')} />
+      <div className={clsx('swiper-pagination', !pagination && 'hidden!')} />
     </Swiper>
   );
 }

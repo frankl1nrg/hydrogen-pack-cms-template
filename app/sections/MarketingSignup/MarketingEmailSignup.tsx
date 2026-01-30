@@ -24,7 +24,7 @@ export function MarketingEmailSignup({
 
   return (
     <form
-      className=" mx-auto w-full max-w-[38rem] text-center"
+      className=" mx-auto w-full max-w-152 text-center"
       onSubmit={handleSubmit}
       ref={formRef}
     >

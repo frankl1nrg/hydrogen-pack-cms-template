@@ -10,7 +10,7 @@ import type {VideoEmbedCms} from './VideoEmbed.types';
 
 export function VideoEmbed({cms}: {cms: VideoEmbedCms}) {
   const {media, section} = cms;
-  const {embed, aspectRatio = 'aspect-[16/9]'} = {...media};
+  const {embed, aspectRatio = 'aspect-video'} = {...media};
   const {maxWidth, enableYPadding, enableXPadding} = {...section};
 
   const {ref: inViewRef, inView} = useInView({
@@ -44,7 +44,7 @@ export function VideoEmbed({cms}: {cms: VideoEmbedCms}) {
     <Container container={cms.container}>
       <div
         className={clsx(
-          '[&_iframe]:!h-full [&_iframe]:!w-full',
+          '[&_iframe]:h-full! [&_iframe]:w-full!',
           enableYPadding && 'py-4 md:py-6 lg:py-8',
           enableXPadding && 'px-contained',
         )}

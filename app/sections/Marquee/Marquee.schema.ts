@@ -151,7 +151,7 @@ export function Schema() {
             name: 'yPaddingDesktop',
             component: 'select',
             options: [
-              {label: '0px', value: 'lg:py-[0px]'},
+              {label: '0px', value: 'lg:py-0'},
               {label: '2px', value: 'lg:py-[2px]'},
               {label: '4px', value: 'lg:py-[4px]'},
               {label: '6px', value: 'lg:py-[6px]'},
@@ -175,7 +175,7 @@ export function Schema() {
             name: 'yPaddingTablet',
             component: 'select',
             options: [
-              {label: '0px', value: 'md:py-[0px]'},
+              {label: '0px', value: 'md:py-0'},
               {label: '2px', value: 'md:py-[2px]'},
               {label: '4px', value: 'md:py-[4px]'},
               {label: '6px', value: 'md:py-[6px]'},
@@ -199,7 +199,7 @@ export function Schema() {
             name: 'yPaddingMobile',
             component: 'select',
             options: [
-              {label: '0px', value: 'py-[0px]'},
+              {label: '0px', value: 'py-0'},
               {label: '2px', value: 'py-[2px]'},
               {label: '4px', value: 'py-[4px]'},
               {label: '6px', value: 'py-[6px]'},
@@ -223,7 +223,7 @@ export function Schema() {
             name: 'spacing',
             component: 'select',
             options: [
-              {label: '0px', value: 'pl-[0px]'},
+              {label: '0px', value: 'pl-0'},
               {label: '8px', value: 'pl-[8px]'},
               {label: '10px', value: 'pl-[10px]'},
               {label: '12px', value: 'pl-[12px]'},

@@ -43,10 +43,25 @@ module.exports = {
         ],
       },
     ],
-    'tailwindcss/no-custom-classname': [
-      'warn',
-      {whitelist: ['theme-\\S+', 'swiper-\\S+']},
-    ],
+    /**
+     * Tailwind ESLint rules disabled due to lack of Tailwind v4 support in
+     * eslint-plugin-tailwindcss. The plugin cannot:
+     * 1. Parse our CSS-based config in app.css (no tailwind.config.js)
+     * 2. Recognize custom class definitions
+     * 3. Detect custom breakpoints (e.g., 'xs')
+     *
+     * This isn't a major issue since the Tailwind LSP server provides proper
+     * autocomplete and validation in the editor.
+     *
+     * When eslint-plugin-tailwindcss adds Tailwind v4 support, re-enable with:
+     * 'tailwindcss/classnames-order': 'warn',
+     * 'tailwindcss/no-custom-classname': [
+     *   'warn',
+     *   {whitelist: ['theme-\\S+', 'swiper-\\S+']},
+     * ],
+     */
+    'tailwindcss/classnames-order': 'off',
+    'tailwindcss/no-custom-classname': 'off',
     'import/order': [
       'error',
       {

@@ -102,8 +102,8 @@ export const MultiRangeSlider = ({
             e.target.value = value.toString();
           }}
           className={clsx(
-            'range-thumb z-[3] w-full',
-            minVal > max - 100 && 'z-[5]',
+            'range-thumb z-3 w-full',
+            minVal > max - 100 && 'z-5',
           )}
         />
         <label htmlFor="multirange-slider-min" className="sr-only">
@@ -121,17 +121,17 @@ export const MultiRangeSlider = ({
             setMaxVal(value);
             e.target.value = value.toString();
           }}
-          className="range-thumb z-[4] w-full"
+          className="range-thumb z-4 w-full"
         />
         <label htmlFor="multirange-slider-max" className="sr-only">
           Max
         </label>
 
         <div className="relative w-full">
-          <div className="absolute z-[1] h-1 w-full rounded-[3px] bg-neutralLighter"></div>
+          <div className="absolute z-1 h-1 w-full rounded-[3px] bg-neutralLighter"></div>
           <div
             ref={range}
-            className="absolute z-[2] h-1 rounded-[3px] bg-black"
+            className="absolute z-2 h-1 rounded-[3px] bg-black"
           ></div>
           <div className="absolute left-0 mt-5 flex w-full justify-between text-sm text-text">
             <p>{displayedMinVal}</p>
@@ -146,7 +146,7 @@ export const MultiRangeSlider = ({
             type="button"
             aria-label={`Set min and max values to ${minVal} and ${maxVal}`}
             className={clsx(
-              'mt-3 rounded border border-border px-1 py-px text-xs font-bold uppercase transition',
+              'mt-3 rounded-sm border border-border px-1 py-px text-xs font-bold uppercase transition',
               !hasChanges && 'opacity-40',
             )}
             disabled={!hasChanges}
@@ -162,7 +162,7 @@ export const MultiRangeSlider = ({
             type="button"
             aria-label={`Set min and max values to ${minVal} and ${maxVal}`}
             className={clsx(
-              'mt-3 rounded border border-border px-1 py-px text-xs font-bold uppercase',
+              'mt-3 rounded-sm border border-border px-1 py-px text-xs font-bold uppercase',
               !canReset && 'opacity-40',
             )}
             onClick={onReset}

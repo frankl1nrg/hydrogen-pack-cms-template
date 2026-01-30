@@ -37,11 +37,11 @@ export function usePromobar(): UsePromobarReturn {
   const headerMobileHeightClass =
     promobarOpen && !promobarDisabled
       ? 'max-md:h-[calc(var(--header-height-mobile)+var(--promobar-height-mobile))]'
-      : 'max-md:h-[var(--header-height-mobile)]';
+      : 'max-md:h-(--header-height-mobile)';
   const headerDesktopHeightClass =
     promobarOpen && !promobarDisabled
       ? 'md:h-[calc(var(--header-height-desktop)+var(--promobar-height-desktop))]'
-      : 'md:h-[var(--header-height-desktop)]';
+      : 'md:h-(--header-height-desktop)';
   const headerHeightClass = `${headerMobileHeightClass} ${headerDesktopHeightClass}`;
 
   const menuMobileHeightClass =
@@ -55,7 +55,7 @@ export function usePromobar(): UsePromobarReturn {
   const menuHeightClass = `${menuMobileHeightClass} ${menuDesktopHeightClass}`;
   const mainPaddingTopClass = !isTransparentNavPage
     ? promobarDisabled
-      ? 'max-md:pt-[var(--header-height-mobile)] md:pt-[var(--header-height-desktop)]'
+      ? 'max-md:pt-(--header-height-mobile) md:pt-(--header-height-desktop)'
       : 'max-md:pt-[calc(var(--header-height-mobile)+var(--promobar-height-mobile))] md:pt-[calc(var(--header-height-desktop)+var(--promobar-height-desktop))]'
     : '';
 

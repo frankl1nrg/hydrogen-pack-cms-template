@@ -22,7 +22,7 @@ export function InnerColorOptionValue({
     : 'cursor-not-allowed';
   const selectedClass = isSelected ? 'border-text' : '';
   const unavailableClass = !isAvailable
-    ? `after:h-px after:w-[150%] after:rotate-[135deg] after:absolute after:top-1/2 after:left-1/2 after:-translate-x-1/2 after:-translate-y-1/2 overflow-hidden ${
+    ? `after:h-px after:w-[150%] after:rotate-135 after:absolute after:top-1/2 after:left-1/2 after:-translate-x-1/2 after:-translate-y-1/2 overflow-hidden ${
         isLightColor ? 'after:bg-black' : 'after:bg-white'
       }`
     : '';

@@ -421,10 +421,10 @@
           },
           "content": {
             "darkOverlay": false,
-            "maxWidthMobile": "max-w-[22.5rem]",
+            "maxWidthMobile": "max-w-90",
             "positionMobile": "justify-center items-center",
             "alignmentMobile": "text-center items-center",
-            "maxWidthDesktop": "md:max-w-[30rem] lg:max-w-[38rem]",
+            "maxWidthDesktop": "md:max-w-120 lg:max-w-152",
             "positionDesktop": "md:justify-center md:items-center",
             "alignmentDesktop": "md:text-center md:items-center"
           },
@@ -433,16 +433,16 @@
               "maxHeight": "",
               "minHeight": "",
               "heightType": "static",
-              "aspectRatio": "max-md:aspect-[3/1]",
-              "staticHeight": "max-md:h-[31.25rem]"
+              "aspectRatio": "max-md:aspect-3/1",
+              "staticHeight": "max-md:h-125"
             },
             "bgColor": "#FFFFFF",
             "desktop": {
               "maxHeight": "",
               "minHeight": "",
               "heightType": "static",
-              "aspectRatio": "md:aspect-[4/1]",
-              "staticHeight": "md:h-[50rem]"
+              "aspectRatio": "md:aspect-4/1",
+              "staticHeight": "md:h-200"
             },
             "fullBleed": true,
             "fullWidth": true,
@@ -573,10 +573,10 @@
                   },
                   "content": {
                     "darkOverlay": false,
-                    "maxWidthMobile": "max-w-[22.5rem]",
+                    "maxWidthMobile": "max-w-90",
                     "positionMobile": "justify-start items-center",
                     "alignmentMobile": "text-left items-start",
-                    "maxWidthDesktop": "md:max-w-[30rem] lg:max-w-[38rem]",
+                    "maxWidthDesktop": "md:max-w-120 lg:max-w-152",
                     "positionDesktop": "md:justify-start items-center",
                     "alignmentDesktop": "md:text-left md:items-start"
                   }
@@ -587,15 +587,15 @@
                   "maxHeight": "",
                   "minHeight": "",
                   "heightType": "aspect-ratio",
-                  "aspectRatio": "max-md:aspect-[4/5]",
-                  "staticHeight": "max-md:h-[31.25rem]"
+                  "aspectRatio": "max-md:aspect-4/5",
+                  "staticHeight": "max-md:h-125"
                 },
                 "desktop": {
                   "maxHeight": "",
                   "minHeight": "",
                   "heightType": "aspect-ratio",
-                  "aspectRatio": "md:aspect-[16/9]",
-                  "staticHeight": "md:h-[43.75rem]"
+                  "aspectRatio": "md:aspect-video",
+                  "staticHeight": "md:h-175"
                 },
                 "fullBleed": true,
                 "fullWidth": true,
@@ -697,7 +697,7 @@
                 "tilesPerViewDesktop": 3,
                 "tilesPerViewTablet": 2.4,
                 "tilesPerViewMobile": 1.4,
-                "aspectRatio": "aspect-[3/4]",
+                "aspectRatio": "aspect-3/4",
                 "textColor": "#000000",
                 "textAlign": "text-left items-start",
                 "tileHeadingSize": "text-h4",
@@ -803,7 +803,7 @@
                 "subtext": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
                 "superheading": "",
                 "alignmentMobile": "text-left items-start",
-                "maxWidthDesktop": "md:max-w-[30rem] lg:max-w-[38rem]",
+                "maxWidthDesktop": "md:max-w-120 lg:max-w-152",
                 "alignmentDesktop": "md:text-left md:items-start"
               },
               "section": {
@@ -864,7 +864,7 @@
                 "subtext": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
                 "superheading": "",
                 "alignmentMobile": "text-left items-start",
-                "maxWidthDesktop": "md:max-w-[30rem] lg:max-w-[38rem]",
+                "maxWidthDesktop": "md:max-w-120 lg:max-w-152",
                 "alignmentDesktop": "md:text-left md:items-start"
               },
               "section": {
@@ -975,7 +975,7 @@
                 "alignment": "text-center items-center"
               },
               "section": {
-                "aspectRatio": "aspect-[5/4]",
+                "aspectRatio": "aspect-5/4",
                 "textColor": "#000000",
                 "textAlign": "text-left items-start",
                 "tileHeadingSize": "text-h4",
@@ -1100,7 +1100,7 @@
                 "tilesPerViewDesktop": 3,
                 "tilesPerViewTablet": 2.4,
                 "tilesPerViewMobile": 1.4,
-                "aspectRatio": "aspect-[3/4]",
+                "aspectRatio": "aspect-3/4",
                 "textColor": "#000000",
                 "fullWidth": false
               },
@@ -1133,7 +1133,7 @@
             "data": {
               "content": "# About Us\n\n**Lorem ipsum dolor sit amet**, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea _commodo consequat_. Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea _commodo consequat_.\n\n**Lorem ipsum dolor sit amet**, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea _commodo consequat_. Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea _commodo consequat_.",
               "section": {
-                "maxWidth": "max-w-[60rem]"
+                "maxWidth": "max-w-240"
               },
               "_template": "markdown",
               "id": "default-about-us-markdown-data",
@@ -1163,7 +1163,7 @@
             "data": {
               "content": "# Privacy Policy\n\n**Lorem ipsum dolor sit amet**, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea _commodo consequat_. Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea _commodo consequat_.\n\n**Lorem ipsum dolor sit amet**, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea _commodo consequat_. Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea _commodo consequat_.",
               "section": {
-                "maxWidth": "max-w-[60rem]"
+                "maxWidth": "max-w-240"
               },
               "_template": "markdown",
               "id": "default-privacy-markdown-data",
@@ -1193,7 +1193,7 @@
             "data": {
               "content": "# Terms & Conditions\n\n**Lorem ipsum dolor sit amet**, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea _commodo consequat_. Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea _commodo consequat_.\n\n**Lorem ipsum dolor sit amet**, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea _commodo consequat_. Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea _commodo consequat_.",
               "section": {
-                "maxWidth": "max-w-[60rem]"
+                "maxWidth": "max-w-240"
               },
               "_template": "markdown",
               "id": "default-markdown-data",
@@ -1282,10 +1282,10 @@
                   },
                   "content": {
                     "darkOverlay": true,
-                    "maxWidthMobile": "max-w-[22.5rem]",
+                    "maxWidthMobile": "max-w-90",
                     "positionMobile": "justify-center items-center",
                     "alignmentMobile": "text-center items-center",
-                    "maxWidthDesktop": "md:max-w-[30rem] lg:max-w-[38rem]",
+                    "maxWidthDesktop": "md:max-w-120 lg:max-w-152",
                     "positionDesktop": "md:justify-center md:items-center",
                     "alignmentDesktop": "md:text-center md:items-center"
                   }
@@ -1294,11 +1294,11 @@
               "section": {
                 "mobile": {
                   "heightType": "static",
-                  "staticHeight": "max-md:h-[12.5rem]"
+                  "staticHeight": "max-md:h-50"
                 },
                 "desktop": {
                   "heightType": "static",
-                  "staticHeight": "md:h-[12.5rem]"
+                  "staticHeight": "md:h-50"
                 },
                 "fullBleed": true,
                 "fullWidth": true,

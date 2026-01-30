@@ -21,7 +21,7 @@ export function ImageTiles({cms}: {cms: ImageTilesCms}) {
     tilesPerViewDesktop = 3,
     tilesPerViewTablet = 2.4,
     tilesPerViewMobile = 1.4,
-    aspectRatio = 'aspect-[3/4]',
+    aspectRatio = 'aspect-3/4',
     textColor = 'var(--text)',
     fullWidth,
   } = {...section};
@@ -51,7 +51,7 @@ export function ImageTiles({cms}: {cms: ImageTilesCms}) {
 
   const maxWidthClass = fullWidth
     ? 'max-w-none'
-    : 'max-w-[var(--content-max-width)]';
+    : 'max-w-(--content-max-width)';
   const isGridOnDesktop = tiles?.length === tilesPerViewDesktop;
 
   return (
@@ -79,7 +79,7 @@ export function ImageTiles({cms}: {cms: ImageTilesCms}) {
                 className={clsx(
                   'relative',
                   Number.isInteger(tilesPerViewDesktop)
-                    ? '[&_.swiper]:max-lg:overflow-visible'
+                    ? 'max-lg:[&_.swiper]:overflow-visible'
                     : '[&_.swiper]:overflow-visible',
                   isGridOnDesktop && 'lg:hidden',
                 )}
@@ -100,7 +100,7 @@ export function ImageTiles({cms}: {cms: ImageTilesCms}) {
                     return (
                       <SwiperSlide
                         key={index}
-                        className={clsx(!swiper && '!hidden')}
+                        className={clsx(!swiper && 'hidden!')}
                       >
                         <ImageTile
                           aspectRatio={aspectRatio}

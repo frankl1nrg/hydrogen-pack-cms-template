@@ -65,9 +65,9 @@ export function FormField({field}: Record<string, any>) {
 
   const inputClass = 'input-text';
   const labelClass = 'input-label p-0';
-  const selectClass = `appearance-none bg-[url('/svgs/chevron-down.svg')] bg-[length:1rem_1rem] bg-[calc(100%-0.75rem)] bg-no-repeat ${inputClass}`;
+  const selectClass = `appearance-none bg-[url('/svgs/chevron-down.svg')] bg-size-[1rem_1rem] bg-position-[calc(100%-0.75rem)] bg-no-repeat ${inputClass}`;
   const halfWidthSpan =
-    column === 1 ? 'col-span-2 xs:col-[1]' : 'col-span-2 xs:col-[2]';
+    column === 1 ? 'col-span-2 xs:col-1' : 'col-span-2 xs:col-2';
 
   return (
     <div
@@ -75,7 +75,7 @@ export function FormField({field}: Record<string, any>) {
         'flex flex-col gap-4',
         'md:flex-row md:gap-8',
         'lg:gap-12',
-        halfWidth ? halfWidthSpan : 'col-[1_/_span_2]',
+        halfWidth ? halfWidthSpan : 'col-[1/span_2]',
         isNotFullWidth ? 'items-start' : 'items-stretch',
       )}
       key={name}

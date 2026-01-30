@@ -10,32 +10,32 @@ import {
 import {containerSettings} from '~/settings/container';
 
 const ASPECT_RATIOS_MOBILE = [
-  {label: '3:2', value: 'max-md:aspect-[3/2]'},
-  {label: '4:3', value: 'max-md:aspect-[4/3]'},
-  {label: '5:4', value: 'max-md:aspect-[5/4]'},
-  {label: '8:7', value: 'max-md:aspect-[8/7]'},
-  {label: '1:1', value: 'max-md:aspect-[1/1]'},
-  {label: '7:8', value: 'max-md:aspect-[7/8]'},
-  {label: '4:5', value: 'max-md:aspect-[4/5]'},
-  {label: '3:4', value: 'max-md:aspect-[3/4]'},
-  {label: '2:3', value: 'max-md:aspect-[2/3]'},
+  {label: '3:2', value: 'max-md:aspect-3/2'},
+  {label: '4:3', value: 'max-md:aspect-4/3'},
+  {label: '5:4', value: 'max-md:aspect-5/4'},
+  {label: '8:7', value: 'max-md:aspect-8/7'},
+  {label: '1:1', value: 'max-md:aspect-square'},
+  {label: '7:8', value: 'max-md:aspect-7/8'},
+  {label: '4:5', value: 'max-md:aspect-4/5'},
+  {label: '3:4', value: 'max-md:aspect-3/4'},
+  {label: '2:3', value: 'max-md:aspect-2/3'},
 ];
 
 const ASPECT_RATIOS_DESKTOP = [
-  {label: '3:2', value: 'md:aspect-[3/2]'},
-  {label: '4:3', value: 'md:aspect-[4/3]'},
-  {label: '5:4', value: 'md:aspect-[5/4]'},
-  {label: '8:7', value: 'md:aspect-[8/7]'},
-  {label: '1:1', value: 'md:aspect-[1/1]'},
-  {label: '7:8', value: 'md:aspect-[7/8]'},
-  {label: '4:5', value: 'md:aspect-[4/5]'},
-  {label: '3:4', value: 'md:aspect-[3/4]'},
-  {label: '2:3', value: 'md:aspect-[2/3]'},
+  {label: '3:2', value: 'md:aspect-3/2'},
+  {label: '4:3', value: 'md:aspect-4/3'},
+  {label: '5:4', value: 'md:aspect-5/4'},
+  {label: '8:7', value: 'md:aspect-8/7'},
+  {label: '1:1', value: 'md:aspect-square'},
+  {label: '7:8', value: 'md:aspect-7/8'},
+  {label: '4:5', value: 'md:aspect-4/5'},
+  {label: '3:4', value: 'md:aspect-3/4'},
+  {label: '2:3', value: 'md:aspect-2/3'},
 ];
 
 const DEFAULT_PRIMARY_TILE = {
-  aspectRatioDesktop: 'md:aspect-[1/1]',
-  aspectRatioMobile: 'max-md:aspect-[4/3]',
+  aspectRatioDesktop: 'md:aspect-square',
+  aspectRatioMobile: 'max-md:aspect-4/3',
   alt: 'Man in white and light tan outfit',
   image: {
     url: 'https://cdn.shopify.com/s/files/1/0671/5074/1778/files/man-in-white-and-light-tan-outfit.jpg?v=1672348139',
@@ -56,7 +56,7 @@ const DEFAULT_PRIMARY_TILE = {
 
 const DEFAULT_SECONDARY_TILES = [
   {
-    aspectRatioMobile: 'max-md:aspect-[4/3]',
+    aspectRatioMobile: 'max-md:aspect-4/3',
     alt: 'Man crossing the street',
     image: {
       url: 'https://cdn.shopify.com/s/files/1/0629/5519/2520/files/man-crossing-street.jpg?v=1700370669',
@@ -75,7 +75,7 @@ const DEFAULT_SECONDARY_TILES = [
     ],
   },
   {
-    aspectRatioMobile: 'max-md:aspect-[4/3]',
+    aspectRatioMobile: 'max-md:aspect-4/3',
     alt: 'Man with beanie and his feet propped up',
     image: {
       url: 'https://cdn.shopify.com/s/files/1/0629/5519/2520/files/man-with-shoes-up-front.jpg?v=1700370673',
@@ -94,7 +94,7 @@ const DEFAULT_SECONDARY_TILES = [
     ],
   },
   {
-    aspectRatioMobile: 'max-md:aspect-[4/3]',
+    aspectRatioMobile: 'max-md:aspect-4/3',
     alt: 'Man in gray sweater and tan coat',
     image: {
       url: 'https://cdn.shopify.com/s/files/1/0671/5074/1778/files/man-poses-in-light-colored-overcoat.jpg?v=1672348143',
@@ -324,7 +324,7 @@ export function Schema() {
               ...tileFields,
             ],
             defaultItem: {
-              aspectRatioMobile: 'max-md:aspect-[4/3]',
+              aspectRatioMobile: 'max-md:aspect-4/3',
               alt: 'Man in white and light tan outfit',
               image: {
                 url: 'https://cdn.shopify.com/s/files/1/0671/5074/1778/files/man-in-white-and-light-tan-outfit.jpg?v=1672348139',

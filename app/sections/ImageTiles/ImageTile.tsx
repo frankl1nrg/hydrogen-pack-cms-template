@@ -23,7 +23,7 @@ const ALIGNMENT_CLASSES: Record<string, {text: string; buttons: string}> = {
 };
 
 export function ImageTile({
-  aspectRatio = 'aspect-[3/4]',
+  aspectRatio = 'aspect-3/4',
   content,
   tile,
 }: ImageTileProps) {

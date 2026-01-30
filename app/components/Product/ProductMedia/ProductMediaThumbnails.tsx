@@ -25,7 +25,7 @@ export function ProductMediaThumbnails({
     <>
       {/* placeholder thumbs while swiper inits */}
       {!thumbsSwiper && (
-        <div className="absolute left-0 top-0 z-[2] grid w-full grid-cols-6 gap-2 lg:grid-cols-1 lg:gap-3">
+        <div className="absolute left-0 top-0 z-2 grid w-full grid-cols-6 gap-2 lg:grid-cols-1 lg:gap-3">
           {media
             .slice(initialIndex, initialIndex + 6)
             .map((mediaItem, index) => {
@@ -48,7 +48,7 @@ export function ProductMediaThumbnails({
 
       <Swiper
         modules={[Navigation]}
-        className="max-lg:!absolute max-lg:left-0 max-lg:top-0 max-lg:w-full lg:h-full"
+        className="max-lg:absolute! max-lg:left-0 max-lg:top-0 max-lg:w-full lg:h-full"
         grabCursor
         initialSlide={initialIndex}
         onSwiper={setThumbsSwiper}
@@ -96,9 +96,9 @@ export function ProductMediaThumbnails({
             );
           })}
 
-        <div className="swiper-button-prev !left-0 !text-black opacity-90 after:flex after:size-5 after:items-center after:justify-center after:overflow-hidden after:rounded-[50%] after:bg-white after:!text-[0.6rem] after:!content-['prev'] lg:!left-1/2 lg:!top-5 lg:!-translate-x-1/2 lg:!rotate-90" />
+        <div className="swiper-button-prev left-0! text-black! opacity-90 after:flex after:size-5 after:items-center after:justify-center after:overflow-hidden after:rounded-[50%] after:bg-white after:text-[0.6rem]! after:content-['prev']! lg:left-1/2! lg:top-5! lg:-translate-x-1/2! lg:rotate-90!" />
 
-        <div className="swiper-button-next !right-0 !text-black opacity-90 after:flex after:size-5 after:items-center after:justify-center after:overflow-hidden after:rounded-[50%] after:bg-white after:!text-[0.6rem] after:!content-['next'] lg:!bottom-0 lg:!left-1/2 lg:!top-auto lg:!-translate-x-1/2 lg:!rotate-90" />
+        <div className="swiper-button-next right-0! text-black! opacity-90 after:flex after:size-5 after:items-center after:justify-center after:overflow-hidden after:rounded-[50%] after:bg-white after:text-[0.6rem]! after:content-['next']! lg:bottom-0! lg:left-1/2! lg:top-auto! lg:-translate-x-1/2! lg:rotate-90!" />
       </Swiper>
     </>
   );

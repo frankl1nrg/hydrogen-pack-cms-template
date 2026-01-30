@@ -31,7 +31,7 @@ export function QuantitySelector({
   return (
     <div
       className={clsx(
-        'flex w-full max-w-[6.5rem] items-center justify-between',
+        'flex w-full max-w-26 items-center justify-between',
         className,
       )}
     >
@@ -62,7 +62,7 @@ export function QuantitySelector({
         {isUpdating ? (
           <Spinner color="var(--neutral-light)" width="20" />
         ) : (
-          <p className="w-full text-center outline-none">{quantity}</p>
+          <p className="w-full text-center outline-hidden">{quantity}</p>
         )}
       </div>
 

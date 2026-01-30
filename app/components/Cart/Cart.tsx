@@ -53,7 +53,7 @@ export const Cart = memo(() => {
             return (
               <li
                 key={line.id}
-                className="[&>div]:border-b [&>div]:border-b-border [&>div]:last:border-none"
+                className="[&>div]:border-b [&>div]:border-b-border last:[&>div]:border-none"
               >
                 <CartLine line={line} closeCart={closeCart} />
               </li>

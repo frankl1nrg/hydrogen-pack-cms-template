@@ -45,7 +45,7 @@ export function BYOBQuickShopOption({
       ? 'cursor-not-allowed'
       : 'md:hover:bg-black md:hover:text-white';
   const unavailableClass = isSoldOut
-    ? 'after:h-px after:w-[150%] after:rotate-[135deg] after:absolute after:top-1/2 after:left-1/2 after:-translate-x-1/2 after:-translate-y-1/2 after:bg-neutralLight text-neutralLight overflow-hidden'
+    ? 'after:h-px after:w-[150%] after:rotate-135 after:absolute after:top-1/2 after:left-1/2 after:-translate-x-1/2 after:-translate-y-1/2 after:bg-neutralLight text-neutralLight overflow-hidden'
     : '';
   const selectedClass = showQtySelector
     ? 'bg-black text-white md:hover:bg-black md:hover:text-white'
@@ -66,7 +66,7 @@ export function BYOBQuickShopOption({
       <button
         aria-label={optionValue.name}
         className={clsx(
-          'relative flex size-full items-center justify-center overflow-hidden whitespace-nowrap px-1 text-center text-sm transition disabled:cursor-not-allowed disabled:md:hover:bg-background disabled:md:hover:text-text',
+          'relative flex size-full items-center justify-center overflow-hidden whitespace-nowrap px-1 text-center text-sm transition disabled:cursor-not-allowed md:disabled:hover:bg-background md:disabled:hover:text-text',
           selectedClass,
           validClass,
           unavailableClass,
@@ -93,7 +93,7 @@ export function BYOBQuickShopOption({
         <>
           <button
             aria-label={`Remove ${variantToAdd?.title} from bundle by 1`}
-            className="absolute left-0 top-0 flex h-1/2 w-full items-center justify-center border-b border-text bg-background text-text disabled:cursor-not-allowed disabled:text-neutralLight md:hover:bg-black md:hover:text-white disabled:md:hover:bg-background disabled:md:hover:text-neutralLight"
+            className="absolute left-0 top-0 flex h-1/2 w-full items-center justify-center border-b border-text bg-background text-text disabled:cursor-not-allowed disabled:text-neutralLight md:hover:bg-black md:hover:text-white md:disabled:hover:bg-background disabled:md:hover:text-neutralLight"
             disabled={bundle?.length === 0}
             onClick={() => {
               if (variantInBundle) {
@@ -113,7 +113,7 @@ export function BYOBQuickShopOption({
 
           <button
             aria-label={`Add ${variantToAdd?.title} to bundle by 1`}
-            className="absolute bottom-0 left-0 flex h-1/2 w-full items-center justify-center bg-background text-text disabled:cursor-not-allowed disabled:text-neutralLight md:hover:bg-black md:hover:text-white disabled:md:hover:bg-background disabled:md:hover:text-neutralLight"
+            className="absolute bottom-0 left-0 flex h-1/2 w-full items-center justify-center bg-background text-text disabled:cursor-not-allowed disabled:text-neutralLight md:hover:bg-black md:hover:text-white md:disabled:hover:bg-background disabled:md:hover:text-neutralLight"
             disabled={incrementDisabled}
             onClick={() => {
               if (variantToAdd) {

@@ -90,7 +90,7 @@ export default function ArticleRoute() {
           {date}
         </p>
 
-        <h1 className="text-h2 max-w-[60rem]">{article.title}</h1>
+        <h1 className="text-h2 max-w-240">{article.title}</h1>
 
         {article.category && (
           <p className="btn-text flex h-8 items-center justify-center rounded-full bg-neutralLighter px-4 text-text">

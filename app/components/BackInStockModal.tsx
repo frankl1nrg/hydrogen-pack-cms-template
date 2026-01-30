@@ -66,7 +66,7 @@ export function BackInStockModal({selectedVariant}: BackInStockModalProps) {
         }}
       >
         <input
-          className="input-text text-text md:max-w-screen-xs"
+          className="input-text text-text md:max-w-(--breakpoint-xs)"
           name="email"
           onChange={(e) => setEmail(e.target.value)}
           placeholder="Enter your email..."

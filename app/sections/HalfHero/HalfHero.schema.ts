@@ -283,9 +283,9 @@ const content = {
       name: 'maxWidthDesktop',
       component: 'select',
       options: [
-        {label: 'Narrow', value: 'md:max-w-[22rem] lg:max-w-[28rem]'},
-        {label: 'Medium', value: 'md:max-w-[30rem] lg:max-w-[38rem]'},
-        {label: 'Wide', value: 'md:max-w-[38rem] lg:max-w-[48rem]'},
+        {label: 'Narrow', value: 'md:max-w-88 lg:max-w-md'},
+        {label: 'Medium', value: 'md:max-w-120 lg:max-w-152'},
+        {label: 'Wide', value: 'md:max-w-152 lg:max-w-3xl'},
         {label: 'Full', value: 'md:max-w-full'},
       ],
     },
@@ -315,7 +315,7 @@ const content = {
     ],
     color: COLOR_SCHEMA_DEFAULT_VALUE.text,
     alignmentDesktop: 'md:text-left md:items-start',
-    maxWidthDesktop: 'md:max-w-[30rem] lg:max-w-[38rem]',
+    maxWidthDesktop: 'md:max-w-120 lg:max-w-152',
     alignmentMobile: 'text-left items-start',
   },
 };

@@ -17,7 +17,7 @@ export function TestimonialSlider({cms}: {cms: TestimonialSliderCms}) {
   };
   const maxWidthClass = fullWidth
     ? 'max-w-none'
-    : 'max-w-[var(--content-max-width)]';
+    : 'max-w-(--content-max-width)';
 
   return (
     <Container container={cms.container}>
@@ -34,7 +34,7 @@ export function TestimonialSlider({cms}: {cms: TestimonialSliderCms}) {
 
           {blocks?.length > 0 && (
             <Swiper
-              className="!static mt-10 w-full"
+              className="static! mt-10 w-full"
               grabCursor
               loop={blocks.length >= 2}
               pagination={{
@@ -70,7 +70,7 @@ export function TestimonialSlider({cms}: {cms: TestimonialSliderCms}) {
                 return (
                   <SwiperSlide key={index}>
                     <div
-                      className="mx-auto flex max-w-[18.75rem] flex-col items-center text-center lg:max-w-[15.625rem]"
+                      className="mx-auto flex max-w-75 flex-col items-center text-center lg:max-w-62.5"
                       style={{
                         color: textColor,
                       }}
@@ -91,12 +91,12 @@ export function TestimonialSlider({cms}: {cms: TestimonialSliderCms}) {
                 );
               })}
 
-              <div className="swiper-pagination !static mt-6 lg:!hidden" />
+              <div className="swiper-pagination static! mt-6 lg:hidden!" />
 
               <div
                 className={clsx(
-                  'swiper-button-prev left-0 !hidden !h-14 !w-14 rounded-full bg-white after:hidden',
-                  blocks.length > 3 ? 'lg:!flex' : 'lg:!hidden',
+                  'swiper-button-prev left-0 hidden! h-14! w-14! rounded-full bg-white after:hidden',
+                  blocks.length > 3 ? 'lg:flex!' : 'lg:hidden!',
                 )}
               >
                 <Svg
@@ -109,8 +109,8 @@ export function TestimonialSlider({cms}: {cms: TestimonialSliderCms}) {
 
               <div
                 className={clsx(
-                  'swiper-button-next right-0 !hidden !h-14 !w-14 rounded-full bg-white after:hidden',
-                  blocks.length > 3 ? 'lg:!flex' : 'lg:!hidden',
+                  'swiper-button-next right-0 hidden! h-14! w-14! rounded-full bg-white after:hidden',
+                  blocks.length > 3 ? 'lg:flex!' : 'lg:hidden!',
                 )}
               >
                 <Svg
