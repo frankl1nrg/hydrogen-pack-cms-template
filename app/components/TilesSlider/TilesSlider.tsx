@@ -71,7 +71,7 @@ export const TilesSlider = forwardRef(
           className={clsx(
             'relative',
             Number.isInteger(tilesPerViewDesktop)
-              ? '[&_.swiper]:max-lg:overflow-visible'
+              ? 'max-lg:[&_.swiper]:overflow-visible'
               : '[&_.swiper]:overflow-visible',
             isGridOnDesktop && 'lg:hidden',
           )}
@@ -91,7 +91,7 @@ export const TilesSlider = forwardRef(
             {tiles.map((item, index) => {
               return (
                 <SwiperSlide
-                  className={clsx('w-full', !swiper && '!hidden')}
+                  className={clsx('w-full', !swiper && 'hidden!')}
                   key={index}
                 >
                   <TilesSliderTile

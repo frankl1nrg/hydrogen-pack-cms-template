@@ -12,7 +12,7 @@ export function BYOBSubnav({
   return (
     <nav
       className={clsx(
-        'z-[1] w-full overflow-hidden border-b border-border bg-background',
+        'z-1 w-full overflow-hidden border-b border-border bg-background',
         className,
       )}
     >
@@ -27,7 +27,7 @@ export function BYOBSubnav({
               <li key={index}>
                 <button
                   className={clsx(
-                    'text-nav relative z-[1] px-3 py-1 after:absolute after:left-0 after:top-0 after:z-[-1] after:size-full after:origin-center after:rounded-full after:bg-neutralLighter after:transition',
+                    'text-nav relative z-1 px-3 py-1 after:absolute after:left-0 after:top-0 after:z-[-1] after:size-full after:origin-center after:rounded-full after:bg-neutralLighter after:transition',
                     isActiveTab ? 'after:scale-100' : 'after:scale-0',
                   )}
                   onClick={() => {

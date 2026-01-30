@@ -62,7 +62,7 @@ export function ImageTilesMosaic({cms}: {cms: ImageTilesMosaicCms}) {
   const gridConfig = GRID_LAYOUT_CONFIG[grid?.gridLayout || '1-wide-2-square'];
   const maxWidthClass = fullWidth
     ? 'max-w-none'
-    : 'max-w-[var(--content-max-width)]';
+    : 'max-w-(--content-max-width)';
   const fullBleedClasses = `${
     desktop?.fullBleed ? 'lg:px-0' : 'lg:px-contained'
   } ${tablet?.fullBleed ? 'max-lg:px-0' : 'max-lg:px-contained'} ${

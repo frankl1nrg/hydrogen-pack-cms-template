@@ -2,11 +2,11 @@ import clsx from 'clsx';
 
 import type {BannerContainerProps} from './Banner.types';
 
-const FALLBACK_DESKTOP_HEIGHT_CLASS = 'md:h-[18.75rem]';
-const FALLBACK_DESKTOP_ASPECT_RATIO_CLASS = 'md:aspect-[4/1]';
+const FALLBACK_DESKTOP_HEIGHT_CLASS = 'md:h-75';
+const FALLBACK_DESKTOP_ASPECT_RATIO_CLASS = 'md:aspect-4/1';
 const FALLBACK_DESKTOP_ASPECT_RATIO = '4 / 1';
-const FALLBACK_MOBILE_HEIGHT_CLASS = 'max-md:h-[12.5rem]';
-const FALLBACK_MOBILE_ASPECT_RATIO_CLASS = 'max-md:aspect-[3/1]';
+const FALLBACK_MOBILE_HEIGHT_CLASS = 'max-md:h-50';
+const FALLBACK_MOBILE_ASPECT_RATIO_CLASS = 'max-md:aspect-3/1';
 const FALLBACK_MOBILE_ASPECT_RATIO = '3 / 1';
 
 export function BannerContainer({
@@ -19,7 +19,7 @@ export function BannerContainer({
   // container
   const maxWidthContainerClass = section?.fullWidth
     ? 'max-w-none'
-    : 'max-w-[var(--content-max-width)]';
+    : 'max-w-(--content-max-width)';
   const fullBleedClass = section?.fullBleed ? '' : 'px-contained';
 
   // aspect ratio

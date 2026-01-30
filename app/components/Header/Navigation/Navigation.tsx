@@ -58,7 +58,7 @@ export const Navigation = memo(
     return (
       <div
         className={clsx(
-          'px-contained relative z-[1] grid flex-1 grid-cols-[1fr_auto_1fr] gap-4 border-b border-b-border transition md:gap-8',
+          'px-contained relative z-1 grid flex-1 grid-cols-[1fr_auto_1fr] gap-4 border-b border-b-border transition md:gap-8',
           gridColsClassDesktop,
         )}
         data-comp={HEADER_NAVIGATION}
@@ -94,7 +94,7 @@ export const Navigation = memo(
 
                       <div
                         className={clsx(
-                          'absolute left-0 top-[calc(100%_-_2px)] h-[3px] w-full origin-center scale-0 border-t-2 border-t-primary bg-transparent transition after:w-full group-hover:scale-100',
+                          'absolute left-0 top-[calc(100%-2px)] h-[3px] w-full origin-center scale-0 border-t-2 border-t-primary bg-transparent transition after:w-full group-hover:scale-100',
                           isHovered ? 'scale-100' : 'scale-0',
                         )}
                       />

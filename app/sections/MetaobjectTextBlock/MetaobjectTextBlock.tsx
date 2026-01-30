@@ -16,7 +16,7 @@ export function MetaobjectTextBlock({cms}: {cms: Record<string, any>}) {
   } = cms;
   const maxWidthClass = full_width
     ? 'max-w-none'
-    : 'max-w-[var(--content-max-width)]';
+    : 'max-w-(--content-max-width)';
 
   return (
     <div
@@ -32,13 +32,13 @@ export function MetaobjectTextBlock({cms}: {cms: Record<string, any>}) {
       >
         {heading &&
           (above_the_fold ? (
-            <h1 className="text-h2 mx-auto max-w-[46rem]">{heading}</h1>
+            <h1 className="text-h2 mx-auto max-w-184">{heading}</h1>
           ) : (
-            <h2 className="text-h2 mx-auto max-w-[46rem]">{heading}</h2>
+            <h2 className="text-h2 mx-auto max-w-184">{heading}</h2>
           ))}
 
         {subtext && (
-          <RichText className="mx-auto max-w-[46rem]">{subtext}</RichText>
+          <RichText className="mx-auto max-w-184">{subtext}</RichText>
         )}
 
         {button_link && (

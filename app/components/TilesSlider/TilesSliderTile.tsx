@@ -14,7 +14,7 @@ interface TilesSliderTileProps {
 }
 
 export function TilesSliderTile({
-  aspectRatio = 'aspect-[3/4]',
+  aspectRatio = 'aspect-3/4',
   item,
   textColor = 'var(--text)',
   textAlign = 'text-left items-start',

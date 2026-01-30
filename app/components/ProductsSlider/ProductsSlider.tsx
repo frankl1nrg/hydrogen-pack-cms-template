@@ -32,7 +32,7 @@ export function ProductsSlider({
   const maxWidthClass =
     section?.fullWidth || isFullBleedAndCentered
       ? 'max-w-none'
-      : 'max-w-[var(--content-max-width)]';
+      : 'max-w-(--content-max-width)';
 
   const breakpoints = useMemo(() => {
     return {
@@ -108,7 +108,7 @@ export function ProductsSlider({
             {products.map((product, index) => {
               const hasFullProduct = !!product?.variants;
               return (
-                <SwiperSlide key={index} className={clsx(!swiper && '!hidden')}>
+                <SwiperSlide key={index} className={clsx(!swiper && 'hidden!')}>
                   <ProductItem
                     enabledColorNameOnHover={
                       productItem?.enabledColorNameOnHover
@@ -128,7 +128,7 @@ export function ProductsSlider({
 
             {/* Navigation */}
             {products.length > breakpoints.desktop.slidesPerView && (
-              <div className="absolute inset-x-0 top-[calc(50%-28px)] z-[1] md:px-8 xl:px-14">
+              <div className="absolute inset-x-0 top-[calc(50%-28px)] z-1 md:px-8 xl:px-14">
                 <div
                   className={clsx(
                     'relative mx-auto',
@@ -138,8 +138,8 @@ export function ProductsSlider({
                 >
                   <div
                     className={clsx(
-                      'swiper-button-prev left-0 top-[calc(50%-1.6875rem)] !hidden !h-14 !w-14 rounded-full border border-border bg-white after:hidden lg:!flex',
-                      !isFullBleedAndCentered && 'xl:left-[-1.6875rem]',
+                      'swiper-button-prev left-0 top-[calc(50%-1.6875rem)] hidden! h-14! w-14! rounded-full border border-border bg-white after:hidden lg:flex!',
+                      !isFullBleedAndCentered && 'xl:-left-6.75',
                     )}
                   >
                     <Svg
@@ -152,8 +152,8 @@ export function ProductsSlider({
 
                   <div
                     className={clsx(
-                      'swiper-button-next right-0 top-[calc(50%-1.6875rem)] !hidden !h-14 !w-14 rounded-full border border-border bg-white after:hidden lg:!flex',
-                      !isFullBleedAndCentered && 'xl:right-[-1.6875rem]',
+                      'swiper-button-next right-0 top-[calc(50%-1.6875rem)] hidden! h-14! w-14! rounded-full border border-border bg-white after:hidden lg:flex!',
+                      !isFullBleedAndCentered && 'xl:-right-6.75',
                     )}
                   >
                     <Svg

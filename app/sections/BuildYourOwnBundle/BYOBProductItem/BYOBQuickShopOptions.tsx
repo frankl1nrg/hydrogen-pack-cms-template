@@ -26,7 +26,7 @@ export function BYOBQuickShopOptions({
   }, [product?.id]);
 
   return (
-    <div className="relative flex h-12 w-full items-center justify-center overflow-hidden rounded border border-black bg-background">
+    <div className="relative flex h-12 w-full items-center justify-center overflow-hidden rounded-sm border border-black bg-background">
       <ul
         className="scrollbar-hide grid h-full flex-1 overflow-y-auto"
         style={{

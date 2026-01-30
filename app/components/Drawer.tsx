@@ -92,10 +92,10 @@ export function Drawer({
                 <DialogPanel
                   as="aside"
                   data-comp={Drawer.displayName}
-                  className="flex h-[var(--viewport-height)] w-screen flex-col justify-between overflow-hidden bg-background align-middle shadow-xl transition-all md:max-w-[var(--drawer-width)]"
+                  className="flex h-(--viewport-height) w-screen flex-col justify-between overflow-hidden bg-background align-middle shadow-xl transition-all md:max-w-(--drawer-width)"
                 >
                   {/* Drawer header */}
-                  <header className="relative flex items-center justify-center border-b border-b-border px-16 max-md:h-[var(--header-height-mobile)] md:h-[var(--header-height-desktop)]">
+                  <header className="relative flex items-center justify-center border-b border-b-border px-16 max-md:h-(--header-height-mobile) md:h-(--header-height-desktop)">
                     <button
                       aria-label={`Close ${ariaName}`}
                       className="absolute left-4 top-1/2 -translate-y-1/2"

@@ -14,7 +14,7 @@ export const CollectionPromoTile = memo(({tile}: CollectionPromoTileProps) => {
     triggerOnce: true,
   });
 
-  const {aspectRatio = 'aspect-[3/4]', background, link, text} = tile;
+  const {aspectRatio = 'aspect-3/4', background, link, text} = tile;
   const {alt, bgColor, darkOverlay, media, videoPoster} = {
     ...background,
   };

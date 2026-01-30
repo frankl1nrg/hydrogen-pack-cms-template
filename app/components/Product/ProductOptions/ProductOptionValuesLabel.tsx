@@ -14,7 +14,7 @@ export const ProductOptionValuesLabel = memo(
       openModal(
         <div>
           <h2 className="text-h3 mb-6 text-center">Size Guide</h2>
-          <div className="h-[30rem] bg-neutralLightest" />
+          <div className="h-120 bg-neutralLightest" />
         </div>,
       );
     }, []);

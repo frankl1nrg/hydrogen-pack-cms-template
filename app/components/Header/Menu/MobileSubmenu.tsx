@@ -25,7 +25,7 @@ export function MobileSubmenu({
   return (
     <div
       className={clsx(
-        'scrollbar-hide absolute left-0 top-0 z-[1] size-full bg-background',
+        'scrollbar-hide absolute left-0 top-0 z-1 size-full bg-background',
         activeSubmenuHasContent ? 'visible' : 'invisible',
       )}
     >
@@ -46,7 +46,7 @@ export function MobileSubmenu({
           >
             <button
               aria-label="Go back to main menu"
-              className="sticky top-0 z-[1] flex h-14 w-full items-center justify-between gap-4 border-b border-b-border bg-background p-4"
+              className="sticky top-0 z-1 flex h-14 w-full items-center justify-between gap-4 border-b border-b-border bg-background p-4"
               onClick={() => handleMobileSubmenu(null)}
               type="button"
             >

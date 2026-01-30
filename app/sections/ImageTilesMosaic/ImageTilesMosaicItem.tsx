@@ -60,7 +60,7 @@ export function ImageTilesMosaicItem({
 
         <div
           className={clsx(
-            'pointer-events-none absolute inset-0 z-[1] flex size-full p-6 text-center md:p-8',
+            'pointer-events-none absolute inset-0 z-1 flex size-full p-6 text-center md:p-8',
             darkOverlay && 'bg-[rgba(0,0,0,0.2)]',
             contentPosition,
           )}

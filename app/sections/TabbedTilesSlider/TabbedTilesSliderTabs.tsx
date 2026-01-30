@@ -25,7 +25,7 @@ export function TabbedTilesSliderTabs({
                 <button
                   aria-label={tab.tabName}
                   className={clsx(
-                    'text-nav relative flex h-full flex-col whitespace-nowrap pb-3 before:absolute before:bottom-0 before:z-[1] before:w-full before:origin-center before:border-b-2 before:border-current before:transition ui-selected:outline-none max-xs:pb-2 max-xs:text-xs',
+                    'text-nav relative flex h-full flex-col whitespace-nowrap pb-3 before:absolute before:bottom-0 before:z-1 before:w-full before:origin-center before:border-b-2 before:border-current before:transition ui-selected:outline-hidden max-xs:pb-2 max-xs:text-xs',
                     activeTabIndex === index
                       ? 'before:scale-100'
                       : 'before:scale-0',

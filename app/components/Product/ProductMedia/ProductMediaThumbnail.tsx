@@ -17,7 +17,7 @@ export function ProductMediaThumbnail({
     <button
       aria-label={`Slide to product image ${index + 1}`}
       className={clsx(
-        'relative flex aspect-square w-full select-none items-center justify-center overflow-hidden rounded border transition',
+        'relative flex aspect-square w-full select-none items-center justify-center overflow-hidden rounded-sm border transition',
         isActive ? 'border-black' : 'border-transparent',
       )}
       onClick={() => swiper?.slideTo(index)}

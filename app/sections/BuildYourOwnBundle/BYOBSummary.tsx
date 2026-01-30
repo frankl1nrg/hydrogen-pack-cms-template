@@ -70,7 +70,7 @@ export function BYOBSummary({
   return (
     <div
       className={clsx(
-        'flex transform-gpu flex-col bg-background transition-[max-height] max-md:h-[calc(var(--viewport-height)-var(--header-height-mobile)-var(--byob-subnav-height))] max-md:w-full max-md:overflow-hidden md:sticky md:top-[var(--header-height-desktop)]',
+        'flex transform-gpu flex-col bg-background transition-[max-height] max-md:h-[calc(var(--viewport-height)-var(--header-height-mobile)-var(--byob-subnav-height))] max-md:w-full max-md:overflow-hidden md:sticky md:top-(--header-height-desktop)',
         menuDesktopHeightClass,
         mobileSummaryOpen
           ? 'max-md:max-h-[calc(var(--viewport-height)-var(--header-height-mobile)-var(--byob-subnav-height))]'
@@ -187,7 +187,7 @@ export function BYOBSummary({
                           className={clsx(
                             'relative text-center text-sm',
                             index === arr.length - 1
-                              ? 'z-[1] text-white after:absolute after:left-1/2 after:top-1/2 after:z-[-1] after:h-[calc(100%+8px)] after:w-[calc(100%+32px)] after:origin-center after:-translate-x-1/2 after:-translate-y-1/2 after:rounded-full after:bg-primary after:transition'
+                              ? 'z-1 text-white after:absolute after:left-1/2 after:top-1/2 after:z-[-1] after:h-[calc(100%+8px)] after:w-[calc(100%+32px)] after:origin-center after:-translate-x-1/2 after:-translate-y-1/2 after:rounded-full after:bg-primary after:transition'
                               : 'text-neutralDarker',
                           )}
                         >

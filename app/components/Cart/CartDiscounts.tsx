@@ -67,7 +67,7 @@ export const CartDiscounts = memo(() => {
     <div className="flex flex-col gap-2 border-t border-t-border p-4">
       <form
         ref={formRef}
-        className="flex h-10 items-center justify-between overflow-hidden rounded border border-border"
+        className="flex h-10 items-center justify-between overflow-hidden rounded-sm border border-border"
         onSubmit={handleUpdateCode}
       >
         <input

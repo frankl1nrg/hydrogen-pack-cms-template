@@ -11,7 +11,7 @@ export function TextBlock({cms}: {cms: TextBlockCms}) {
   const {buttons, heading, section, subtext} = cms;
   const maxWidthClass = section?.fullWidth
     ? 'max-w-none'
-    : 'max-w-[var(--content-max-width)]';
+    : 'max-w-(--content-max-width)';
 
   return (
     <Container container={cms.container}>
@@ -28,13 +28,13 @@ export function TextBlock({cms}: {cms: TextBlockCms}) {
         >
           {heading &&
             (section?.aboveTheFold ? (
-              <h1 className="text-h2 mx-auto max-w-[46rem]">{heading}</h1>
+              <h1 className="text-h2 mx-auto max-w-184">{heading}</h1>
             ) : (
-              <h2 className="text-h2 mx-auto max-w-[46rem]">{heading}</h2>
+              <h2 className="text-h2 mx-auto max-w-184">{heading}</h2>
             ))}
 
           {subtext && (
-            <RichText className="mx-auto max-w-[46rem]">{subtext}</RichText>
+            <RichText className="mx-auto max-w-184">{subtext}</RichText>
           )}
 
           {buttons?.length > 0 && (

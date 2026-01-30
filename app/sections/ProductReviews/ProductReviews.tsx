@@ -36,7 +36,7 @@ export function ProductReviews({cms}: {cms: {container: ContainerSettings}}) {
     <Container container={cms.container}>
       <div data-comp={PRODUCT_REVIEWS_KEY} ref={inViewRef}>
         {/* Placeholder */}
-        <div className="flex h-[32rem] w-full items-center justify-center bg-neutralLightest p-5 text-center">
+        <div className="flex h-128 w-full items-center justify-center bg-neutralLightest p-5 text-center">
           <h2>Product reviews widget here</h2>
         </div>
 

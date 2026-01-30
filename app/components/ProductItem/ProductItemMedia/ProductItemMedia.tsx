@@ -33,7 +33,7 @@ export const ProductItemMedia = memo(
     return (
       <div
         className="group/media relative overflow-hidden bg-neutralLightest before:via-[black-100/10]"
-        // for a static/consistent aspect ratio, delete style below and add 'aspect-[var(--product-image-aspect-ratio)]' to className
+        // for a static/consistent aspect ratio, delete style below and add 'aspect-(--product-image-aspect-ratio)' to className
         // set var(--product-image-aspect-ratio) in styles/app.css
         style={{
           aspectRatio:
@@ -102,9 +102,9 @@ export const ProductItemMedia = memo(
           <ProductDraftMediaOverlay />
         )}
 
-        <div className="pointer-events-none absolute left-0 top-0 z-[1] p-2.5 xs:p-3 xl:p-4">
+        <div className="pointer-events-none absolute left-0 top-0 z-1 p-2.5 xs:p-3 xl:p-4">
           <Badges
-            className="max-xl:text-label-sm gap-2 xs:gap-2 [&_div]:max-xl:px-1.5 [&_div]:max-xl:py-0.5"
+            className="max-xl:text-label-sm gap-2 xs:gap-2 max-xl:[&_div]:px-1.5 max-xl:[&_div]:py-0.5"
             tags={selectedProduct?.tags || []}
           />
         </div>

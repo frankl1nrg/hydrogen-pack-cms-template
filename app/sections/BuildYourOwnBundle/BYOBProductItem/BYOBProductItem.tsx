@@ -87,7 +87,7 @@ export function BYOBProductItem({
             <button
               disabled
               type="button"
-              className="btn-primary !h-12 !py-0 text-sm"
+              className="btn-primary h-12! py-0! text-sm"
             >
               Sold Out
             </button>

@@ -90,7 +90,7 @@ export const CollectionFilterOption = memo(
       <button
         aria-label={`Add ${label} to filters`}
         className={clsx(
-          'group flex gap-3 px-4 text-left text-base transition max-md:h-10 max-md:w-full max-md:items-center md:gap-2 hover:md:text-text disabled:hover:md:text-neutralMedium',
+          'group flex gap-3 px-4 text-left text-base transition max-md:h-10 max-md:w-full max-md:items-center md:gap-2 md:hover:text-text disabled:hover:md:text-neutralMedium',
           disabled && 'cursor-not-allowed opacity-60',
           isActive ? 'text-text max-md:font-bold' : 'text-neutralMedium',
         )}
@@ -107,8 +107,8 @@ export const CollectionFilterOption = memo(
         <div
           className={clsx(
             'relative flex size-5 items-center justify-center overflow-hidden border border-border transition md:mt-px md:size-[18px]',
-            isColor ? 'rounded-[50%]' : 'rounded',
-            !disabled && 'group-hover:md:border-text',
+            isColor ? 'rounded-[50%]' : 'rounded-sm',
+            !disabled && 'md:group-hover:border-text',
             isActive && 'border-text',
           )}
           style={{

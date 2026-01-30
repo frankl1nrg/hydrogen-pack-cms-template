@@ -37,7 +37,7 @@ export const QuickShopOptions = memo(
     }, [cartOpen]);
 
     return (
-      <div className="group/quickshop relative flex h-[3.125rem] w-full items-center justify-center overflow-hidden rounded border border-black">
+      <div className="group/quickshop relative flex h-12.5 w-full items-center justify-center overflow-hidden rounded-sm border border-black">
         <p className="btn-text truncate px-3">{option.text}</p>
 
         <ul
@@ -69,7 +69,7 @@ export const QuickShopOptions = memo(
           <button
             aria-label="Show quick add options"
             className={clsx(
-              'absolute inset-0 z-[1] size-full md:hidden',
+              'absolute inset-0 z-1 size-full md:hidden',
               optionsVisible && 'hidden',
             )}
             onClick={() => setOptionsVisible(!optionsVisible)}

@@ -133,8 +133,8 @@ export function Schema() {
             name: 'aspectRatio',
             component: 'select',
             options: [
-              {label: '1:1', value: 'aspect-[1/1]'},
-              {label: '9:16', value: 'aspect-[9/16]'},
+              {label: '1:1', value: 'aspect-square'},
+              {label: '9:16', value: 'aspect-9/16'},
             ],
           },
           {
@@ -142,8 +142,8 @@ export function Schema() {
             name: 'gridGap',
             component: 'select',
             options: [
-              {label: '0px', value: 'gap-[0px]'},
-              {label: '1px', value: 'gap-[1px]'},
+              {label: '0px', value: 'gap-0'},
+              {label: '1px', value: 'gap-px'},
               {label: '2px', value: 'gap-[2px]'},
               {label: '4px', value: 'gap-[4px]'},
               {label: '6px', value: 'gap-[6px]'},
@@ -160,8 +160,8 @@ export function Schema() {
         defaultValue: {
           fullWidth: false,
           fullBleed: true,
-          aspectRatio: 'aspect-[1/1]',
-          gridGap: 'gap-[1px]',
+          aspectRatio: 'aspect-square',
+          gridGap: 'gap-px',
         },
       },
       containerSettings(),

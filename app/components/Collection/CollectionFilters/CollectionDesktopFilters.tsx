@@ -35,7 +35,7 @@ export const CollectionDesktopFilters = memo(
             sticky && stickyTopClass,
           )}
         >
-          <div className="overflow-hidden rounded border border-border max-md:hidden">
+          <div className="overflow-hidden rounded-sm border border-border max-md:hidden">
             <div className="scrollbar-hide max-h-[calc(var(--viewport-height)-var(--header-height-desktop)-100px)] overflow-y-auto overflow-x-hidden">
               {!!filters.length && (
                 <ul className="overflow-y-auto">
@@ -43,7 +43,7 @@ export const CollectionDesktopFilters = memo(
                     if (!filter.values.length) return null;
 
                     return (
-                      <li className="[&>div]:last:border-b-0" key={index}>
+                      <li className="last:[&>div]:border-b-0" key={index}>
                         {mounted && (
                           <CollectionFilterDropdown
                             activeFilterValues={activeFilterValues}

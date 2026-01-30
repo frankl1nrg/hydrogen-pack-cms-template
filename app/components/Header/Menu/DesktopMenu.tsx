@@ -56,7 +56,7 @@ export const DesktopMenu = memo(
               key={index}
               inert={!isActiveMenu}
               className={clsx(
-                'mx-auto grid max-w-[70rem] grid-cols-[12rem_1fr] gap-5 p-8 md:p-12',
+                'mx-auto grid max-w-280 grid-cols-[12rem_1fr] gap-5 p-8 md:p-12',
                 !isActiveMenu && 'hidden',
               )}
             >

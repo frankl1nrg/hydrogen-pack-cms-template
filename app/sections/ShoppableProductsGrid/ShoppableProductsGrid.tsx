@@ -58,7 +58,7 @@ export function ShoppableProductsGrid({
   return (
     <Container container={cms.container}>
       <div className="px-contained py-contained">
-        <div className="mx-auto w-full max-w-[var(--content-max-width)]">
+        <div className="mx-auto w-full max-w-(--content-max-width)">
           {heading && (
             <h2 className={clsx('mb-5 md:mb-8', headingTextAlign)}>
               {heading}

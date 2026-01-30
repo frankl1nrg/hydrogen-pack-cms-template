@@ -37,7 +37,7 @@ export function AddressesItem({
     defaultAddress?.id?.split('?')[0] === id.split('?')[0];
 
   return (
-    <div className="relative flex h-full flex-col justify-between gap-x-4 gap-y-6 rounded border border-border p-6 xs:flex-row md:flex-col lg:flex-row">
+    <div className="relative flex h-full flex-col justify-between gap-x-4 gap-y-6 rounded-sm border border-border p-6 xs:flex-row md:flex-col lg:flex-row">
       <div>
         <h3 className="text-h5 mb-2">
           {firstName} {lastName}

@@ -20,7 +20,7 @@ export function PressSlider({cms}: {cms: PressSliderCms}) {
 
   const maxWidthContainerClass = fullWidth
     ? 'max-w-none'
-    : 'max-w-[var(--content-max-width)]';
+    : 'max-w-(--content-max-width)';
 
   return (
     <Container container={cms.container}>
@@ -51,7 +51,7 @@ export function PressSlider({cms}: {cms: PressSliderCms}) {
               {slides.map(({quote}, index) => {
                 return (
                   <SwiperSlide className="w-full py-2" key={index}>
-                    <h2 className="mx-auto max-w-[50rem] px-4 text-center text-3xl font-bold md:text-4xl">
+                    <h2 className="mx-auto max-w-200 px-4 text-center text-3xl font-bold md:text-4xl">
                       &quot;{quote}&quot;
                     </h2>
                   </SwiperSlide>

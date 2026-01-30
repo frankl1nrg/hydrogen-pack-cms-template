@@ -32,15 +32,15 @@ export function CustomerAccountLayout({children}: {children: React.ReactNode}) {
       className="px-contained py-contained"
       data-comp={CustomerAccountLayout.displayName}
     >
-      <div className="mx-auto grid w-full max-w-screen-xl grid-cols-1 gap-8 md:grid-cols-[12rem_1fr] lg:grid-cols-[16rem_1fr]">
+      <div className="mx-auto grid w-full max-w-(--breakpoint-xl) grid-cols-1 gap-8 md:grid-cols-[12rem_1fr] lg:grid-cols-[16rem_1fr]">
         <div>
           <div className="flex flex-row justify-between gap-6 pb-6 md:flex-col md:justify-start md:border-b md:border-b-border">
             <div className="flex-1">
-              <h2 className="text-h4 md:text-h5 lg:text-h4 mb-1 break-words">
+              <h2 className="text-h4 md:text-h5 lg:text-h4 mb-1 wrap-break-word">
                 Hi{customer?.firstName ? `, ${customer.firstName}` : ''}
               </h2>
 
-              <p className="break-words text-xs">
+              <p className="wrap-break-word text-xs">
                 {customer?.emailAddress?.emailAddress}
               </p>
             </div>
@@ -83,7 +83,7 @@ export function CustomerAccountLayout({children}: {children: React.ReactNode}) {
           <Menu as="div" className="relative w-full md:hidden">
             <MenuButton
               aria-label="Open account menu"
-              className="flex h-14 w-full items-center justify-between gap-4 rounded border border-neutralLight px-5 text-base"
+              className="flex h-14 w-full items-center justify-between gap-4 rounded-sm border border-neutralLight px-5 text-base"
               type="button"
             >
               <p>{activeMenuItem?.link?.text}</p>
@@ -98,7 +98,7 @@ export function CustomerAccountLayout({children}: {children: React.ReactNode}) {
 
             <Transition
               as="div"
-              className="absolute left-0 top-[calc(100%+0.5rem)] z-10 w-full rounded border border-neutralLight bg-background text-base"
+              className="absolute left-0 top-[calc(100%+0.5rem)] z-10 w-full rounded-sm border border-neutralLight bg-background text-base"
               enter="transition duration-100 ease-out"
               enterFrom="transform scale-95 opacity-0"
               enterTo="transform scale-100 opacity-100"
@@ -147,7 +147,7 @@ export function CustomerAccountLayout({children}: {children: React.ReactNode}) {
                   <li key={index}>
                     <Link
                       aria-label={link.text}
-                      className="break-words text-xs"
+                      className="wrap-break-word text-xs"
                       to={link.url}
                       type={link.type}
                     >

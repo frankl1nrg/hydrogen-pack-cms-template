@@ -31,7 +31,7 @@ export function OrdersItem({order}: {order: Order}) {
   return (
     <>
       {/* mobile */}
-      <div className="flex flex-col gap-3 rounded border border-border p-6 md:hidden">
+      <div className="flex flex-col gap-3 rounded-sm border border-border p-6 md:hidden">
         <div className="flex justify-between">
           <Link
             aria-label={`Go to order page for order ${order.name}`}

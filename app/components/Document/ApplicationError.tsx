@@ -22,14 +22,14 @@ export function ApplicationError({error}: ApplicationErrorProps) {
   const isPreviewModeEnabled = !!rootLoaderData?.isPreviewModeEnabled;
 
   return isDevelopment && error ? (
-    <div className="pointer-events-none fixed inset-0 z-[1000] size-full">
+    <div className="pointer-events-none fixed inset-0 z-1000 size-full">
       {modalOpen && (
         <section
           className="px-contained py-contained pointer-events-auto flex size-full items-center justify-center bg-[rgba(0,0,0,0.5)]"
           data-comp="application-error"
         >
-          <aside className="flex max-h-full max-w-full justify-center overflow-hidden rounded-md bg-white p-5 drop-shadow after:absolute after:inset-x-0 after:top-0 after:h-[4px] after:w-full after:bg-red-500 md:p-10">
-            <div className="flex w-full max-w-screen-xl flex-col overflow-hidden xs:max-sm:min-w-96 sm:max-md:min-w-[28rem] md:min-w-[32rem]">
+          <aside className="flex max-h-full max-w-full justify-center overflow-hidden rounded-md bg-white p-5 drop-shadow-sm after:absolute after:inset-x-0 after:top-0 after:h-[4px] after:w-full after:bg-red-500 md:p-10">
+            <div className="flex w-full max-w-(--breakpoint-xl) flex-col overflow-hidden xs:max-sm:min-w-96 sm:max-md:min-w-md md:min-w-lg">
               <h1
                 aria-live="assertive"
                 className="mb-4 font-[system-ui,sans-serif] text-[24px]"
@@ -72,7 +72,7 @@ export function ApplicationError({error}: ApplicationErrorProps) {
       {!modalOpen && (
         <button
           aria-label="Open error modal"
-          className="pointer-events-auto absolute bottom-20 left-10 rounded-lg bg-red-500 p-5 text-white drop-shadow"
+          className="pointer-events-auto absolute bottom-20 left-10 rounded-lg bg-red-500 p-5 text-white drop-shadow-sm"
           onClick={() => setModalOpen(true)}
           type="button"
         >

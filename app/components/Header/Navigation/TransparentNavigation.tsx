@@ -53,7 +53,7 @@ export const TransparentNavigation = memo(() => {
   return (
     <nav
       className={clsx(
-        'px-contained relative z-[1] grid flex-1 grid-cols-[1fr_auto_1fr] gap-4 transition md:gap-8',
+        'px-contained relative z-1 grid flex-1 grid-cols-[1fr_auto_1fr] gap-4 transition md:gap-8',
         gridColsClassDesktop,
       )}
       data-comp={HEADER_NAVIGATION}

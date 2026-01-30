@@ -10,7 +10,7 @@ export function Accordions({cms}: {cms: AccordionsCms}) {
   return (
     <Container container={cms.container}>
       <div className="px-contained my-4 md:my-8 xl:my-12">
-        <div className="mx-auto max-w-[50rem]">
+        <div className="mx-auto max-w-200">
           {!!heading && <h2 className="text-h2 mb-4 text-center">{heading}</h2>}
 
           <ul className="grid grid-cols-1 gap-4">

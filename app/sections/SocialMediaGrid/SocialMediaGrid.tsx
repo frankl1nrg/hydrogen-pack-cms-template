@@ -16,10 +16,10 @@ export function SocialMediaGrid({cms}: {cms: SocialMediaGridCms}) {
   });
 
   const {media, section} = cms;
-  const {aspectRatio = 'aspect-[1/1]', gridGap = 'gap-[1px]'} = {...section};
+  const {aspectRatio = 'aspect-square', gridGap = 'gap-px'} = {...section};
   const maxWidthClass = section?.fullWidth
     ? 'max-w-none'
-    : 'max-w-[var(--content-max-width)]';
+    : 'max-w-(--content-max-width)';
 
   return (
     <Container container={cms.container}>

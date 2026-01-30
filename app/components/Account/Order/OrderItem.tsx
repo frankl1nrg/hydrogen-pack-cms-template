@@ -55,12 +55,12 @@ export const OrderItem = memo(({item}: OrderItemProps) => {
               aria-label={fullProduct.title}
               to={`/products/${fullProduct?.handle}`}
             >
-              <p className="whitespace-normal break-words font-semibold">
+              <p className="whitespace-normal wrap-break-word font-semibold">
                 {fullProduct.title}
               </p>
             </Link>
           ) : (
-            <p className="whitespace-normal break-words font-semibold">
+            <p className="whitespace-normal wrap-break-word font-semibold">
               {item.title}
             </p>
           )}

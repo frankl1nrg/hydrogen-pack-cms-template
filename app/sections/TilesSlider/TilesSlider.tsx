@@ -28,7 +28,7 @@ export function TilesSlider({cms}: {cms: TilesSliderCms}) {
 
   const maxWidthClass = fullWidth
     ? 'max-w-none'
-    : 'max-w-[var(--content-max-width)]';
+    : 'max-w-(--content-max-width)';
 
   return (
     <Container container={cms.container}>

@@ -26,7 +26,7 @@ export function ImageTilesGrid({cms}: {cms: ImageTilesGridCms}) {
 
   const maxWidthClass = fullWidth
     ? 'max-w-none'
-    : 'max-w-[var(--content-max-width)]';
+    : 'max-w-(--content-max-width)';
   const gridColsClasses = `${desktop?.gridCols || 'lg:grid-cols-3'} ${
     tablet?.gridCols || 'max-lg:grid-cols-2'
   } ${mobile?.gridCols || 'max-md:grid-cols-1'}`;

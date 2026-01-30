@@ -22,7 +22,7 @@ export function MarketingPhoneSignup({
 
   return (
     <form
-      className=" mx-auto w-full max-w-[38rem]"
+      className=" mx-auto w-full max-w-152"
       onSubmit={handleSubmit}
       ref={formRef}
     >

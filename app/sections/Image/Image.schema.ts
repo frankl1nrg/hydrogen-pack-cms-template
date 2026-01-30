@@ -122,23 +122,23 @@ export function Schema() {
             options: [
               {
                 label: 'Narrow',
-                value: 'max-w-[30rem]',
+                value: 'max-w-120',
               },
               {
                 label: 'Medium Narrow',
-                value: 'max-w-[45rem]',
+                value: 'max-w-180',
               },
               {
                 label: 'Medium',
-                value: 'max-w-[60rem]',
+                value: 'max-w-240',
               },
               {
                 label: 'Medium Wide',
-                value: 'max-w-[75rem]',
+                value: 'max-w-300',
               },
               {
                 label: 'Wide',
-                value: 'max-w-[90rem]',
+                value: 'max-w-360',
               },
               {label: 'Full', value: 'max-w-full'},
             ],
@@ -154,7 +154,7 @@ export function Schema() {
           },
         ],
         defaultValue: {
-          maxWidth: 'max-w-[90rem]',
+          maxWidth: 'max-w-360',
           enablePadding: true,
         },
       },

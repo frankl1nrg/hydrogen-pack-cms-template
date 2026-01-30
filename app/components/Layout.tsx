@@ -26,7 +26,7 @@ export function Layout({children}: {children: ReactNode}) {
       <Analytics />
 
       <div
-        className="flex h-[var(--viewport-height)] flex-col"
+        className="flex h-(--viewport-height) flex-col"
         data-comp={Layout.displayName}
       >
         <Header />

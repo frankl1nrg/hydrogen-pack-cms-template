@@ -32,7 +32,7 @@ export function TabbedTilesSlider({cms}: {cms: TabbedTilesSliderCms}) {
   } = {...section};
   const maxWidthClass = fullWidth
     ? 'max-w-none'
-    : 'max-w-[var(--content-max-width)]';
+    : 'max-w-(--content-max-width)';
 
   return (
     <Container container={cms.container}>

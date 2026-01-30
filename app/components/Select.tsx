@@ -93,7 +93,7 @@ export function Select({
       >
         <ListboxOptions
           className={clsx(
-            'absolute left-1/2 z-10 flex max-h-72 w-full -translate-x-1/2 flex-col gap-0 overflow-hidden overflow-y-auto rounded border border-neutralLight bg-background py-2 text-base',
+            'absolute left-1/2 z-10 flex max-h-72 w-full -translate-x-1/2 flex-col gap-0 overflow-hidden overflow-y-auto rounded-sm border border-neutralLight bg-background py-2 text-base',
             openFrom === 'top'
               ? 'bottom-[calc(100%+0.5rem)]'
               : 'top-[calc(100%+0.5rem)]',

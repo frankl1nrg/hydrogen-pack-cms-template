@@ -81,8 +81,8 @@ export const Promobar = memo(() => {
       className={clsx(
         'overflow-hidden transition-[height] ease-out',
         promobarOpen && !promobarDisabled
-          ? 'duration-300 max-md:h-[var(--promobar-height-mobile)] md:h-[var(--promobar-height-desktop)]'
-          : 'h-0 duration-[50ms]',
+          ? 'duration-300 max-md:h-(--promobar-height-mobile) md:h-(--promobar-height-desktop)'
+          : 'h-0 duration-50',
       )}
       style={{backgroundColor: bgColor}}
     >
@@ -118,13 +118,13 @@ export const Promobar = memo(() => {
             <>
               <button
                 aria-label="See previous slide"
-                className="swiper-button-prev !left-4 md:!left-8 xl:!left-12"
+                className="swiper-button-prev left-4! md:left-8! xl:left-12!"
                 type="button"
               />
 
               <button
                 aria-label="See next slide"
-                className="swiper-button-next !right-4 md:!right-8 xl:!right-12"
+                className="swiper-button-next right-4! md:right-8! xl:right-12!"
                 type="button"
               />
             </>

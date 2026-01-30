@@ -80,7 +80,7 @@ export function ShoppableSocialVideo({cms}: {cms: ShoppableSocialVideoCms}) {
 
   return (
     <div
-      className="shoppable-video-hero-container relative flex h-[var(--viewport-height,100vh)] justify-center overflow-hidden"
+      className="shoppable-video-hero-container relative flex h-(--viewport-height,100vh) justify-center overflow-hidden"
       style={{
         ...(colorType === 'solid'
           ? {backgroundColor: firstColor}
@@ -180,7 +180,7 @@ export function ShoppableSocialVideo({cms}: {cms: ShoppableSocialVideoCms}) {
                   )}
 
                   <div
-                    className="swiper-scrollbar !bottom-auto !left-0 !top-0 !z-0 !h-1.5 !w-full"
+                    className="swiper-scrollbar bottom-auto! left-0! top-0! z-0! h-1.5! w-full!"
                     style={{
                       backgroundColor: hexToRgba(slideBgColor, slideBgOpacity),
                     }}
@@ -227,7 +227,7 @@ export function ShoppableSocialVideo({cms}: {cms: ShoppableSocialVideoCms}) {
       </div>
 
       {/* Dark gradient for transparent header */}
-      <div className="pointer-events-none absolute left-1/2 top-0 z-[1] h-[calc(100%+100px)] w-[calc(100%+400px)] -translate-x-1/2 bg-transparent shadow-[inset_0_50px_100px_50px_rgba(0,0,0,0.4)]" />
+      <div className="pointer-events-none absolute left-1/2 top-0 z-1 h-[calc(100%+100px)] w-[calc(100%+400px)] -translate-x-1/2 bg-transparent shadow-[inset_0_50px_100px_50px_rgba(0,0,0,0.4)]" />
     </div>
   );
 }

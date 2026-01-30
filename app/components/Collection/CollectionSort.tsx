@@ -133,7 +133,7 @@ export const CollectionSort = memo(
     return (
       <div className="ml-auto w-full md:w-auto md:min-w-32">
         <Select
-          className="[&>button]:max-md:pl-4 [&>button]:max-md:pr-2.5"
+          className="max-md:[&>button]:pl-4 max-md:[&>button]:pr-2.5"
           onSelect={handleSort}
           options={options}
           placeholder="Sort"

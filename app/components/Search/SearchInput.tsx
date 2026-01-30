@@ -39,7 +39,7 @@ export function SearchInput({
 
         <input
           aria-label="Search here"
-          className="min-w-0 flex-1 py-3 text-base outline-none"
+          className="min-w-0 flex-1 py-3 text-base outline-hidden"
           onChange={handleInput}
           onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => {
             if (e.key === 'Enter' && !!e.currentTarget.value) {

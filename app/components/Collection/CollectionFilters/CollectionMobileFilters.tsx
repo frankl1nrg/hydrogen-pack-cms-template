@@ -27,7 +27,7 @@ export const CollectionMobileFilters = memo(
         open={mobileFiltersOpen}
         openFrom="right"
       >
-        <div className="sticky top-0 z-[1] border-b border-border bg-background p-4 pt-5">
+        <div className="sticky top-0 z-1 border-b border-border bg-background p-4 pt-5">
           <div className="mb-4 flex justify-between gap-2">
             <h3 className="text-nav">
               Filters Summary{' '}
@@ -47,7 +47,7 @@ export const CollectionMobileFilters = memo(
             )}
           </div>
 
-          <div className="scrollbar-hide max-h-[4.5rem] min-h-8 overflow-y-auto">
+          <div className="scrollbar-hide max-h-18 min-h-8 overflow-y-auto">
             {totalFilters ? (
               <CollectionFiltersSummary hideClear />
             ) : (

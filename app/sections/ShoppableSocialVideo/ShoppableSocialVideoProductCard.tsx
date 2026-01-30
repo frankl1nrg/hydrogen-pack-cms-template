@@ -162,7 +162,7 @@ export function ShoppableSocialVideoProductCard({
               <div className="space-y-1">
                 {badge && (
                   <div
-                    className="flex h-5 w-fit items-center justify-center whitespace-nowrap rounded px-1.5 text-xs uppercase"
+                    className="flex h-5 w-fit items-center justify-center whitespace-nowrap rounded-sm px-1.5 text-xs uppercase"
                     style={{
                       backgroundColor: badgeBgColor,
                       color: badgeTextColor,

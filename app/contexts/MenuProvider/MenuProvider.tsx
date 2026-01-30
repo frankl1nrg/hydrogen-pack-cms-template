@@ -167,11 +167,11 @@ export function MenuProvider({children}: {children: ReactNode}) {
     const iframes = document.querySelectorAll('iframe');
     if (iframesShouldBeHidden) {
       [...(iframes || [])].forEach((iframe) => {
-        iframe.classList.add('!invisible');
+        iframe.classList.add('invisible!');
       });
     } else {
       [...(iframes || [])].forEach((iframe) => {
-        iframe.classList.remove('!invisible');
+        iframe.classList.remove('invisible!');
       });
     }
   }, [iframesShouldBeHidden, isReady]);

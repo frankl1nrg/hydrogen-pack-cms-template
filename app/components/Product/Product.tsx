@@ -78,7 +78,7 @@ export const Product = memo(
     return (
       <section data-comp="product">
         <div className="md:px-contained py-6 md:py-10 lg:py-12">
-          <div className="mx-auto grid max-w-screen-xl grid-cols-1 gap-y-5 md:grid-cols-2 md:grid-rows-[auto_1fr] md:gap-y-4">
+          <div className="mx-auto grid max-w-(--breakpoint-xl) grid-cols-1 gap-y-5 md:grid-cols-2 md:grid-rows-[auto_1fr] md:gap-y-4">
             {/* mobile header placement */}
             {/* note: remove this component if mobile header shares same placement as desktop */}
             <ProductHeader

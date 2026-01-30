@@ -47,7 +47,7 @@ export function BlogGrid({cms}: {cms: BlogGridCms}) {
     <Container container={cms.container}>
       <div className="px-contained flex flex-col py-8 md:py-10 lg:py-12">
         {filteredArticles?.length ? (
-          <ul className="mx-auto grid max-w-[var(--content-max-width)] grid-cols-1 gap-x-5 gap-y-8 xs:grid-cols-2 md:grid-cols-3">
+          <ul className="mx-auto grid max-w-(--content-max-width) grid-cols-1 gap-x-5 gap-y-8 xs:grid-cols-2 md:grid-cols-3">
             {filteredArticles.slice(startIndex, endIndex).map((article) => {
               return (
                 <li key={article.id}>
@@ -57,7 +57,7 @@ export function BlogGrid({cms}: {cms: BlogGridCms}) {
             })}
           </ul>
         ) : (
-          <div className="flex min-h-[12.5rem] items-center justify-center text-center">
+          <div className="flex min-h-50 items-center justify-center text-center">
             <p>No posts found under this category.</p>
           </div>
         )}

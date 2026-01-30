@@ -47,7 +47,7 @@ export const ProductMetafieldsAccordion = memo(
 
             <Expand open={open}>
               <DisclosurePanel
-                className="px-4 pt-4 [&_h1]:mb-3 [&_h1]:text-sm [&_h2]:mb-3 [&_h2]:text-sm [&_h3]:mb-3 [&_h3]:text-sm [&_h4]:mb-3 [&_h4]:text-sm [&_h5]:mb-3 [&_h5]:text-sm [&_h6]:mb-3 [&_h6]:text-sm [&_ol]:!pl-4 [&_ol]:text-sm [&_p]:mb-3 [&_p]:text-sm [&_ul]:!pl-4 [&_ul]:text-sm"
+                className="px-4 pt-4 [&_h1]:mb-3 [&_h1]:text-sm [&_h2]:mb-3 [&_h2]:text-sm [&_h3]:mb-3 [&_h3]:text-sm [&_h4]:mb-3 [&_h4]:text-sm [&_h5]:mb-3 [&_h5]:text-sm [&_h6]:mb-3 [&_h6]:text-sm [&_ol]:pl-4! [&_ol]:text-sm [&_p]:mb-3 [&_p]:text-sm [&_ul]:pl-4! [&_ul]:text-sm"
                 static
               >
                 <RichText>{value}</RichText>

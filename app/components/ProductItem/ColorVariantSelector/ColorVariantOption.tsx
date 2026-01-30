@@ -58,7 +58,7 @@ export const ColorVariantOption = memo(
         </button>
 
         {enabledColorNameOnHover && (
-          <p className="pointer-events-none absolute bottom-[calc(100%+2px)] left-1/4 hidden whitespace-nowrap rounded bg-neutralLightest px-1 text-2xs leading-[14px] text-neutralMedium opacity-0 transition duration-75 md:block group-hover/color:md:opacity-100">
+          <p className="pointer-events-none absolute bottom-[calc(100%+2px)] left-1/4 hidden whitespace-nowrap rounded-sm bg-neutralLightest px-1 text-2xs leading-[14px] text-neutralMedium opacity-0 transition duration-75 md:block md:group-hover/color:opacity-100">
             {color.name}
           </p>
         )}

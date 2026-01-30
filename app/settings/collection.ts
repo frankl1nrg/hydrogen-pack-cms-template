@@ -286,11 +286,11 @@ export default {
                   name: 'aspectRatio',
                   component: 'select',
                   options: [
-                    {label: '1:1', value: 'aspect-[1/1]'},
-                    {label: '4:5', value: 'aspect-[4/5]'},
-                    {label: '3:4', value: 'aspect-[3/4]'},
-                    {label: '2:3', value: 'aspect-[2/3]'},
-                    {label: '9:16', value: 'aspect-[9/16]'},
+                    {label: '1:1', value: 'aspect-square'},
+                    {label: '4:5', value: 'aspect-4/5'},
+                    {label: '3:4', value: 'aspect-3/4'},
+                    {label: '2:3', value: 'aspect-2/3'},
+                    {label: '9:16', value: 'aspect-9/16'},
                     {label: 'Fill', value: 'h-full'},
                   ],
                 },
@@ -371,7 +371,7 @@ export default {
               ],
               defaultItem: {
                 position: 5,
-                aspectRatio: 'aspect-[3/4]',
+                aspectRatio: 'aspect-3/4',
                 background: {
                   bgColor: COLOR_SCHEMA_DEFAULT_VALUE.neutralLightest,
                   darkOverlay: false,
@@ -401,7 +401,7 @@ export default {
             promoTiles: [
               {
                 position: 5,
-                aspectRatio: 'aspect-[3/4]',
+                aspectRatio: 'aspect-3/4',
                 background: {
                   bgColor: COLOR_SCHEMA_DEFAULT_VALUE.neutralLightest,
                   darkOverlay: false,

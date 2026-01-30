@@ -19,7 +19,7 @@ export function BYOBProductItemMedia({
 
   return (
     <div
-      className="group/media relative aspect-[var(--product-image-aspect-ratio)]"
+      className="group/media relative aspect-(--product-image-aspect-ratio)"
       onMouseEnter={() => {
         if (hoverMedia?.mediaContentType !== 'VIDEO') return;
         hoverVideoRef.current?.play();

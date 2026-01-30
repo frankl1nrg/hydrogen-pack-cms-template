@@ -36,7 +36,7 @@ export function Badges({className = '', tags = []}: BadgesProps) {
   return (
     <div
       className={clsx(
-        'text-label flex flex-wrap gap-2.5 xs:gap-3 [&_div]:rounded [&_div]:px-2 [&_div]:py-1',
+        'text-label flex flex-wrap gap-2.5 xs:gap-3 [&_div]:rounded-sm [&_div]:px-2 [&_div]:py-1',
         className,
       )}
     >

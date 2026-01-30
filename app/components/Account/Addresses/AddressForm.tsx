@@ -82,7 +82,7 @@ export function AddressForm({
   }, [initialAddress, defaultAddress?.id]);
 
   return (
-    <div className="rounded border border-border p-4 sm:p-8">
+    <div className="rounded-sm border border-border p-4 sm:p-8">
       <div className="mb-8 flex items-start justify-between gap-3">
         <h2 className="text-h5">{title}</h2>
 
@@ -171,7 +171,7 @@ export function AddressForm({
           />
         </label>
 
-        <div className="z-[11] col-span-2 sm:col-span-1">
+        <div className="z-11 col-span-2 sm:col-span-1">
           <p className="input-label">State/Province</p>
 
           <Select

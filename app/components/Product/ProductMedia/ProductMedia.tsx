@@ -53,7 +53,7 @@ export function ProductMedia({
       <div className="order-1 lg:order-2">
         <div
           className="relative md:bg-neutralLightest"
-          // for a static/consistent aspect ratio, delete style below and add 'aspect-[var(--product-image-aspect-ratio)]' to className
+          // for a static/consistent aspect ratio, delete style below and add 'aspect-(--product-image-aspect-ratio)' to className
           // set var(--product-image-aspect-ratio) in styles/app.css
           style={{
             aspectRatio:
@@ -75,7 +75,7 @@ export function ProductMedia({
               el: '.swiper-pagination',
               clickable: true,
             }}
-            className="max-md:!pb-5 md:pb-0"
+            className="max-md:pb-5! md:pb-0"
           >
             {media.map((media, index) => {
               return (
@@ -89,7 +89,7 @@ export function ProductMedia({
               );
             })}
 
-            <div className="active-bullet-black swiper-pagination !top-[calc(100%-8px)] flex w-full justify-center gap-2.5 md:hidden" />
+            <div className="active-bullet-black swiper-pagination top-[calc(100%-8px)]! flex w-full justify-center gap-2.5 md:hidden" />
 
             {(product as ProductWithStatus).status === 'DRAFT' && (
               <ProductDraftMediaOverlay />
@@ -98,7 +98,7 @@ export function ProductMedia({
 
           {/* placeholder image while swiper inits */}
           {!swiper && (
-            <div className="absolute inset-0 z-[1] size-full max-md:hidden">
+            <div className="absolute inset-0 z-1 size-full max-md:hidden">
               <ProductImage
                 alt={product.title}
                 image={firstMediaImageOnMount}
@@ -107,7 +107,7 @@ export function ProductMedia({
             </div>
           )}
 
-          <div className="pointer-events-none absolute left-0 top-0 z-[1] p-2.5 xs:p-4 md:p-3 xl:p-4">
+          <div className="pointer-events-none absolute left-0 top-0 z-1 p-2.5 xs:p-4 md:p-3 xl:p-4">
             <Badges tags={product.tags} />
           </div>
         </div>

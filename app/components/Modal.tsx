@@ -43,7 +43,7 @@ export const Modal = memo(() => {
           <DialogPanel
             as="aside"
             className={clsx(
-              'fixed left-1/2 top-1/2 z-50 max-h-[calc(var(--viewport-height)-2rem)] w-[calc(100%-2rem)] max-w-screen-md -translate-x-1/2 -translate-y-1/2 overflow-hidden bg-background',
+              'fixed left-1/2 top-1/2 z-50 max-h-[calc(var(--viewport-height)-2rem)] w-[calc(100%-2rem)] max-w-(--breakpoint-md) -translate-x-1/2 -translate-y-1/2 overflow-hidden bg-background',
               className,
             )}
             {...props}

@@ -22,7 +22,7 @@ export function HalfHero({cms}: {cms: HalfHeroCms}) {
 
   const maxWidthContainerClass = section?.fullWidth
     ? 'max-w-none'
-    : 'max-w-[var(--content-max-width)]';
+    : 'max-w-(--content-max-width)';
   const fillClass = fill ? 'h-full' : `md:before:float-left ${aspectDesktop}`;
   const mediaOrderClasses = `${
     mediaOrderMobile === '2' ? 'order-2' : 'order-1'
