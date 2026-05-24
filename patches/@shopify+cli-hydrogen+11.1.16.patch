@@ -1,0 +1,140 @@
+diff --git a/node_modules/@shopify/cli-hydrogen/dist/commands/hydrogen/deploy.js b/node_modules/@shopify/cli-hydrogen/dist/commands/hydrogen/deploy.js
+index 45db0fe..67a3f57 100644
+--- a/node_modules/@shopify/cli-hydrogen/dist/commands/hydrogen/deploy.js
++++ b/node_modules/@shopify/cli-hydrogen/dist/commands/hydrogen/deploy.js
+@@ -253,10 +253,10 @@ ${changedFiles.trimEnd()}`;
+   }
+   let userProvidedEnvironmentTag = null;
+   let isPreview = false;
+-  if (isCI && envHandle) {
++  if (isCI && envHandle && !envBranch) {
+     throw new AbortError(
+-      "Can't specify an environment handle in CI",
+-      "Environments are automatically picked up by the current Git branch."
++      "Can't specify an environment handle in CI without --env-branch",
++      "Environments are automatically picked up by the current Git branch, or pass --env-branch to set the deployment tag explicitly."
+     );
+   }
+   if (isCI && envBranch) {
+@@ -272,12 +272,17 @@ ${changedFiles.trimEnd()}`;
+     }
+     token = token || deploymentData.oxygenDeploymentToken;
+     if (envHandle) {
+-      userProvidedEnvironmentTag = findEnvironmentOrThrow(
++      const resolvedEnvironment = findEnvironmentOrThrow(
+         deploymentData.environments || [],
+         envHandle
+-      ).branch;
+-      if (userProvidedEnvironmentTag === null) {
+-        isPreview = true;
++      );
++      if (envBranch) {
++        userProvidedEnvironmentTag = envBranch;
++      } else {
++        userProvidedEnvironmentTag = resolvedEnvironment.branch;
++        if (userProvidedEnvironmentTag === null) {
++          isPreview = true;
++        }
+       }
+     } else if (envBranch) {
+       userProvidedEnvironmentTag = findEnvironmentByBranchOrThrow(
+@@ -370,14 +375,16 @@ ${changedFiles.trimEnd()}`;
+     overriddenEnvironmentVariables
+   };
+   if (!isCI && !config.defaultEnvironment && (userProvidedEnvironmentTag || userChosenEnvironmentTag)) {
+-    let chosenEnvironment = findEnvironmentByBranchOrThrow(
+-      deploymentData.environments,
+-      config.environmentTag
+-    );
++    let chosenEnvironment = envHandle
++      ? findEnvironmentOrThrow(deploymentData.environments, envHandle)
++      : findEnvironmentByBranchOrThrow(
++          deploymentData.environments,
++          config.environmentTag
++        );
+     let confirmationMessage = `Creating a deployment against ${createEnvironmentCliChoiceLabel(
+       chosenEnvironment.name,
+       chosenEnvironment.handle,
+-      chosenEnvironment.branch
++      envHandle && envBranch ? envBranch : chosenEnvironment.branch
+     )}`;
+     const confirmPush = await renderConfirmationPrompt({
+       confirmationMessage: "Yes, confirm deploy",
+diff --git a/node_modules/@shopify/cli-hydrogen/dist/lib/flags.js b/node_modules/@shopify/cli-hydrogen/dist/lib/flags.js
+index 2c86b59..6e28ea5 100644
+--- a/node_modules/@shopify/cli-hydrogen/dist/lib/flags.js
++++ b/node_modules/@shopify/cli-hydrogen/dist/lib/flags.js
+@@ -45,8 +45,7 @@ const commonFlags = {
+   },
+   env: {
+     env: Flags.string({
+-      description: "Specifies the environment to perform the operation using its handle. Fetch the handle using the `env list` command.",
+-      exclusive: ["env-branch"]
++      description: "Specifies the environment to perform the operation using its handle. Fetch the handle using the `env list` command. May be combined with `--env-branch` to override the deployment tag while still selecting the environment by handle (useful for release-train workflows)."
+     })
+   },
+   /**
+diff --git a/node_modules/@shopify/cli-hydrogen/oclif.manifest.json b/node_modules/@shopify/cli-hydrogen/oclif.manifest.json
+index 5db47d3..965a545 100644
+--- a/node_modules/@shopify/cli-hydrogen/oclif.manifest.json
++++ b/node_modules/@shopify/cli-hydrogen/oclif.manifest.json
+@@ -315,10 +315,7 @@
+           "type": "option"
+         },
+         "env": {
+-          "description": "Specifies the environment to perform the operation using its handle. Fetch the handle using the `env list` command.",
+-          "exclusive": [
+-            "env-branch"
+-          ],
++          "description": "Specifies the environment to perform the operation using its handle. Fetch the handle using the `env list` command. May be combined with `--env-branch` to override the deployment tag while still selecting the environment by handle (useful for release-train workflows).",
+           "name": "env",
+           "hasDynamicHelp": false,
+           "multiple": false,
+@@ -568,10 +565,7 @@
+           "type": "option"
+         },
+         "env": {
+-          "description": "Specifies the environment to perform the operation using its handle. Fetch the handle using the `env list` command.",
+-          "exclusive": [
+-            "env-branch"
+-          ],
++          "description": "Specifies the environment to perform the operation using its handle. Fetch the handle using the `env list` command. May be combined with `--env-branch` to override the deployment tag while still selecting the environment by handle (useful for release-train workflows).",
+           "name": "env",
+           "hasDynamicHelp": false,
+           "multiple": false,
+@@ -691,10 +685,7 @@
+       "description": "Populate your .env with variables from your Hydrogen storefront.",
+       "flags": {
+         "env": {
+-          "description": "Specifies the environment to perform the operation using its handle. Fetch the handle using the `env list` command.",
+-          "exclusive": [
+-            "env-branch"
+-          ],
++          "description": "Specifies the environment to perform the operation using its handle. Fetch the handle using the `env list` command. May be combined with `--env-branch` to override the deployment tag while still selecting the environment by handle (useful for release-train workflows).",
+           "name": "env",
+           "hasDynamicHelp": false,
+           "multiple": false,
+@@ -762,10 +753,7 @@
+       "description": "Push environment variables from the local .env file to your linked Hydrogen storefront.",
+       "flags": {
+         "env": {
+-          "description": "Specifies the environment to perform the operation using its handle. Fetch the handle using the `env list` command.",
+-          "exclusive": [
+-            "env-branch"
+-          ],
++          "description": "Specifies the environment to perform the operation using its handle. Fetch the handle using the `env list` command. May be combined with `--env-branch` to override the deployment tag while still selecting the environment by handle (useful for release-train workflows).",
+           "name": "env",
+           "hasDynamicHelp": false,
+           "multiple": false,
+@@ -1264,10 +1252,7 @@
+           "type": "option"
+         },
+         "env": {
+-          "description": "Specifies the environment to perform the operation using its handle. Fetch the handle using the `env list` command.",
+-          "exclusive": [
+-            "env-branch"
+-          ],
++          "description": "Specifies the environment to perform the operation using its handle. Fetch the handle using the `env list` command. May be combined with `--env-branch` to override the deployment tag while still selecting the environment by handle (useful for release-train workflows).",
+           "name": "env",
+           "hasDynamicHelp": false,
+           "multiple": false,
