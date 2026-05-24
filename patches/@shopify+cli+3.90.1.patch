@@ -1,3 +1,69 @@
+diff --git a/node_modules/@shopify/cli/dist/chunk-DOZD5WAI.js b/node_modules/@shopify/cli/dist/chunk-DOZD5WAI.js
+index 0afb01a..8b06958 100644
+--- a/node_modules/@shopify/cli/dist/chunk-DOZD5WAI.js
++++ b/node_modules/@shopify/cli/dist/chunk-DOZD5WAI.js
+@@ -147190,8 +147190,7 @@ var DEFAULT_APP_PORT = 3e3, DEFAULT_INSPECTOR_PORT = 9229, commonFlags = {
+   },
+   env: {
+     env: import_core.Flags.string({
+-      description: "Specifies the environment to perform the operation using its handle. Fetch the handle using the `env list` command.",
+-      exclusive: ["env-branch"]
++      description: "Specifies the environment to perform the operation using its handle. Fetch the handle using the `env list` command. May be combined with `--env-branch` to override the deployment tag while still selecting the environment by handle (useful for release-train workflows)."
+     })
+   },
+   /**
+diff --git a/node_modules/@shopify/cli/dist/index.js b/node_modules/@shopify/cli/dist/index.js
+index b701118..dce9680 100644
+--- a/node_modules/@shopify/cli/dist/index.js
++++ b/node_modules/@shopify/cli/dist/index.js
+@@ -206773,10 +206773,10 @@ ${changedFiles.trimEnd()}`, packageManagers.forEach(({ name, lockfile: lockfile2
+     );
+   }
+   let userProvidedEnvironmentTag = null, isPreview = !1;
+-  if (isCI3 && envHandle)
++  if (isCI3 && envHandle && !envBranch)
+     throw new AbortError(
+-      "Can't specify an environment handle in CI",
+-      "Environments are automatically picked up by the current Git branch."
++      "Can't specify an environment handle in CI without --env-branch",
++      "Environments are automatically picked up by the current Git branch, or pass --env-branch to set the deployment tag explicitly."
+     );
+   if (isCI3 && envBranch && (userProvidedEnvironmentTag = envBranch), !isCI3) {
+     if (deploymentData = await getOxygenDeploymentData({
+@@ -206784,10 +206784,13 @@ ${changedFiles.trimEnd()}`, packageManagers.forEach(({ name, lockfile: lockfile2
+       flagShop: shop
+     }), !deploymentData)
+       return;
+-    token = token || deploymentData.oxygenDeploymentToken, envHandle ? (userProvidedEnvironmentTag = findEnvironmentOrThrow(
+-      deploymentData.environments || [],
+-      envHandle
+-    ).branch, userProvidedEnvironmentTag === null && (isPreview = !0)) : envBranch && (userProvidedEnvironmentTag = findEnvironmentByBranchOrThrow(
++    if (token = token || deploymentData.oxygenDeploymentToken, envHandle) {
++      let resolvedEnvironment = findEnvironmentOrThrow(
++        deploymentData.environments || [],
++        envHandle
++      );
++      envBranch ? userProvidedEnvironmentTag = envBranch : (userProvidedEnvironmentTag = resolvedEnvironment.branch, userProvidedEnvironmentTag === null && (isPreview = !0));
++    } else envBranch && (userProvidedEnvironmentTag = findEnvironmentByBranchOrThrow(
+       deploymentData.environments || [],
+       envBranch
+     ).branch);
+@@ -206858,13 +206861,13 @@ ${changedFiles.trimEnd()}`, packageManagers.forEach(({ name, lockfile: lockfile2
+     overriddenEnvironmentVariables
+   };
+   if (!isCI3 && !config2.defaultEnvironment && (userProvidedEnvironmentTag || userChosenEnvironmentTag)) {
+-    let chosenEnvironment = findEnvironmentByBranchOrThrow(
++    let chosenEnvironment = envHandle ? findEnvironmentOrThrow(deploymentData.environments, envHandle) : findEnvironmentByBranchOrThrow(
+       deploymentData.environments,
+       config2.environmentTag
+     ), confirmationMessage = `Creating a deployment against ${createEnvironmentCliChoiceLabel(
+       chosenEnvironment.name,
+       chosenEnvironment.handle,
+-      chosenEnvironment.branch
++      envHandle && envBranch ? envBranch : chosenEnvironment.branch
+     )}`;
+     if (!await renderConfirmationPrompt({
+       confirmationMessage: "Yes, confirm deploy",
 diff --git a/node_modules/@shopify/cli/oclif.manifest.json b/node_modules/@shopify/cli/oclif.manifest.json
 index 5a2129e..600d155 100644
 --- a/node_modules/@shopify/cli/oclif.manifest.json
