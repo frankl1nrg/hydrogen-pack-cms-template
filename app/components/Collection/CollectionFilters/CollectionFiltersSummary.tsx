@@ -32,6 +32,8 @@ export const CollectionFiltersSummary = memo(
             if (value === true) name = 'In stock';
             if (value === false) name = 'Out of stock';
             filterLabel = 'Avail';
+          } else if (id?.includes('filtersettinggroup')) {
+            name = filterValue.label;
           } else if (
             typeof value === 'object' &&
             Object.hasOwn({...value}, 'value')

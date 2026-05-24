@@ -1,4 +1,4 @@
-import type {AppLoadContext} from '@shopify/remix-oxygen';
+import type {AppLoadContext} from 'react-router';
 
 import {SITE_SETTINGS_QUERY} from '~/data/graphql/pack/settings';
 import {LAYOUT_QUERY} from '~/data/graphql/storefront/shop';
@@ -15,13 +15,14 @@ export const getSiteSettings = async (
   context: AppLoadContext,
 ): Promise<RootSiteSettings> => {
   const {pack, storefront} = context;
-  return pack.query(SITE_SETTINGS_QUERY, {
+  const result = await pack.query(SITE_SETTINGS_QUERY, {
     variables: {
       country: storefront.i18n.country,
       language: storefront.i18n.language,
     },
     cache: storefront.CacheLong(),
-  }) as RootSiteSettings;
+  });
+  return result as RootSiteSettings;
 };
 
 export const getPrimaryDomain = ({

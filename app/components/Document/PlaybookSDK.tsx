@@ -1,50 +1,66 @@
 /**
  * Playbook SDK - enables A/B testing and conversion tracking
  * To enable: add PUBLIC_PLAYBOOK_SHOP_ID env variable with your Playbook shop UUID
- * Optional: PUBLIC_PLAYBOOK_SDK_URL to override SDK endpoint (defaults to prod)
  *
- * Anti-flicker: Hides page when Playbook params present, reveals when SDK ready
+ * Anti-flicker: Conditionally server-renders a <style> tag when Playbook params
+ * are present (determined by the root loader). This survives React hydration
+ * (React manages it) and uses opacity (can't be overridden by child elements).
  */
-export function PlaybookSDK({ENV}: {ENV: Record<string, string>}) {
+export function PlaybookSDK({
+  ENV,
+  hasPlaybookParams,
+}: {
+  ENV: Record<string, string>;
+  hasPlaybookParams?: boolean;
+}) {
   if (!ENV.PUBLIC_PLAYBOOK_SHOP_ID) return null;
 
-  const sdkUrl =
-    ENV.PUBLIC_PLAYBOOK_SDK_URL || 'https://www.heyplaybook.com/sdk/playbook.js';
+  // Proxy enabled by default — routes API calls through the store's own domain,
+  // making requests first-party and invisible to ad blockers.
+  // Set PUBLIC_PLAYBOOK_PROXY_ENABLED=false to send API calls direct to heyplaybook.com.
+  const useProxy = ENV.PUBLIC_PLAYBOOK_PROXY_ENABLED !== 'false';
+  const sdkUrl = ENV.PUBLIC_PLAYBOOK_SDK_URL || 'https://cdn.heyplaybook.com/playbook.js';
+  const apiEndpoint = useProxy
+    ? '/apps/playbook'
+    : 'https://www.heyplaybook.com';
 
-  // Anti-flicker inline script - runs synchronously before hydration
-  const antiFlickerScript = `
+  const revealScript = `
     (function(){
-      var search = location.search;
-      var hasPlaybookParams = search.indexOf('_pv=') > -1 || search.indexOf('pbk=') > -1 || search.indexOf('pb_mode=brand_preview') > -1 || search.indexOf('_preview=true') > -1;
-      var isHidden = false;
-      var timeoutId = null;
-
-      if (hasPlaybookParams) {
-        document.documentElement.style.visibility = 'hidden';
-        isHidden = true;
-        // Failsafe: reveal after 3s if SDK doesn't load
-        timeoutId = setTimeout(function() {
-          document.documentElement.style.visibility = '';
-          isHidden = false;
-        }, 3000);
+      function reveal() {
+        document.documentElement.classList.add('pb-ready');
+        if (window.__pbFlickerTimeout) {
+          clearTimeout(window.__pbFlickerTimeout);
+          window.__pbFlickerTimeout = null;
+        }
       }
 
-      // Expose pageReady for SDK to call when done
+      ${hasPlaybookParams ? 'window.__pbFlickerTimeout = setTimeout(reveal, 3000);' : ''}
+
       window.Playbook = window.Playbook || {};
-      window.Playbook.pageReady = function() {
-        if (timeoutId) clearTimeout(timeoutId);
-        if (isHidden) {
-          document.documentElement.style.visibility = '';
-          isHidden = false;
-        }
-      };
+      window.Playbook.pageReady = reveal;
     })();
   `;
 
   return (
     <>
-      <script dangerouslySetInnerHTML={{__html: antiFlickerScript}} />
-      <script src={sdkUrl} data-shop-id={ENV.PUBLIC_PLAYBOOK_SHOP_ID} async />
+      {hasPlaybookParams && (
+        <style
+          id="pb-anti-flicker"
+          dangerouslySetInnerHTML={{
+            __html:
+              'html:not(.pb-ready){opacity:0!important}html.pb-ready{opacity:1!important;transition:opacity 0.3s ease-in!important}',
+          }}
+        />
+      )}
+      <script dangerouslySetInnerHTML={{__html: revealScript}} />
+      <script
+        src={sdkUrl}
+        data-pb-config={JSON.stringify({
+          shopId: ENV.PUBLIC_PLAYBOOK_SHOP_ID,
+          apiEndpoint,
+        })}
+        async
+      />
     </>
   );
 }

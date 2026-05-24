@@ -1,5 +1,5 @@
 import {useCallback, useEffect, useRef, useState} from 'react';
-import {useFetcher} from '@remix-run/react';
+import {useFetcher} from 'react-router';
 import {useAnalytics} from '@shopify/hydrogen';
 
 import {AnalyticsEvent} from '~/components/Analytics/constants';
@@ -46,7 +46,12 @@ export function useMarketingListSubscribe({
   const [message, setMessage] = useState('');
   const [submitted, setSubmitted] = useState(false);
 
-  const propertiesString = JSON.stringify(properties);
+  let propertiesString = '';
+  try {
+    propertiesString = JSON.stringify(properties);
+  } catch (error) {
+    console.error('useMarketingListSubscribe:error:', error);
+  }
 
   const handleSubmit = useCallback(
     async (e: React.FormEvent<HTMLFormElement>) => {

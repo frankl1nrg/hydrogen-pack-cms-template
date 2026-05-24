@@ -1,4 +1,6 @@
-import {redirect, type LoaderFunctionArgs} from '@shopify/remix-oxygen';
+import {redirect} from 'react-router';
+
+import type {Route} from './+types/($locale).cart.$lines';
 
 /**
  * Automatically creates a new cart based on the URL and redirects straight to checkout.
@@ -19,7 +21,25 @@ import {redirect, type LoaderFunctionArgs} from '@shopify/remix-oxygen';
  * ```
  * @preserve
  */
-export async function loader({request, context, params}: LoaderFunctionArgs) {
+
+/**
+ * Playbook (heyplaybook.com) A/B testing attribution.
+ * The Playbook SDK sets cookies (_pb_variant, _pb_impression_id, _pb_test_id)
+ * when a visitor lands on a Playbook experience. These need to be carried
+ * through to the Shopify order as cart attributes so the orders/paid webhook
+ * can attribute the purchase back to the correct test variant.
+ *
+ * This route creates a brand-new cart server-side from a URL, so the SDK's
+ * client-side cart injection never runs. We read the cookies and inject them
+ * manually after cart creation.
+ */
+function getCookie(request: Request, name: string): string | null {
+  const cookies = request.headers.get('cookie') || '';
+  const match = cookies.match(new RegExp(`(?:^|; )${name}=([^;]*)`));
+  return match ? decodeURIComponent(match[1]) : null;
+}
+
+export async function loader({request, context, params}: Route.LoaderArgs) {
   const {cart} = context;
   const {lines} = params;
   const linesMap = lines?.split(',').map((line) => {
@@ -39,7 +59,12 @@ export async function loader({request, context, params}: LoaderFunctionArgs) {
   const discount = searchParams.get('discount');
   const discountArray = discount ? [discount] : [];
 
-  //! create a cart
+  // Playbook attribution — read cookies set by the Playbook SDK
+  const pbVariant = getCookie(request, '_pb_variant');
+  const pbImpressionId = getCookie(request, '_pb_impression_id');
+  const pbTestId = getCookie(request, '_pb_test_id');
+
+  // Create a cart
   const result = await cart.create({
     lines: linesMap,
     discountCodes: discountArray,
@@ -53,10 +78,21 @@ export async function loader({request, context, params}: LoaderFunctionArgs) {
     });
   }
 
+  // Playbook attribution — inject into the new cart as private attributes
+  // (double-underscore suffix hides them from customers but persists to the
+  // Shopify order's note_attributes, where our webhook picks them up)
+  if (pbVariant && pbImpressionId && pbTestId) {
+    await cart.updateAttributes([
+      {key: 'pb_variant__', value: pbVariant},
+      {key: 'pb_impression_id__', value: pbImpressionId},
+      {key: 'pb_test_id__', value: pbTestId},
+    ]);
+  }
+
   // Update cart id in cookie
   const headers = cart.setCartId(cartResult.id);
 
-  //! redirect to checkout
+  // Redirect to checkout
   if (cartResult.checkoutUrl) {
     return redirect(cartResult.checkoutUrl, {headers});
   } else {
