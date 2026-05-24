@@ -14,7 +14,7 @@ export function CartPage() {
   const {cart: cartSettings} = useSettings();
   const {isCartReady} = useGlobal();
   const cart = useCart();
-  const {lines = [], totalQuantity = 0} = cart;
+  const {lines, totalQuantity = 0} = cart;
   const cartLines = lines as CartLineType[];
   const heading = cartSettings?.heading ?? 'My Cart';
   const hasCartLines = totalQuantity > 0;
@@ -47,7 +47,7 @@ export function CartPage() {
                   return (
                     <li
                       key={line.id}
-                      className="border-b border-b-border last:border-none"
+                      className="[&>div]:border-b [&>div]:border-b-border [&>div]:last:border-none"
                     >
                       <CartLine line={line} />
                     </li>

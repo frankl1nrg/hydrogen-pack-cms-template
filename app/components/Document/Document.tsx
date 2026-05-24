@@ -1,5 +1,5 @@
 import {useMemo} from 'react';
-import {Links, Meta, Scripts, ScrollRestoration} from '@remix-run/react';
+import {Links, Meta, Scripts, ScrollRestoration} from 'react-router';
 import {PreviewProvider} from '@pack/react';
 import type {ReactNode} from 'react';
 
@@ -20,6 +20,7 @@ export function Document({children, title}: DocumentProps) {
   const {
     customizerMeta,
     ENV,
+    hasPlaybookParams,
     isPreviewModeEnabled,
     siteSettings,
     siteTitle,
@@ -59,6 +60,7 @@ export function Document({children, title}: DocumentProps) {
         <Favicon />
         <Meta />
         <Links />
+        <PlaybookSDK ENV={ENV} hasPlaybookParams={hasPlaybookParams} />
       </head>
 
       <body>
@@ -74,7 +76,6 @@ export function Document({children, title}: DocumentProps) {
           </PreviewProvider>
         </ContextsProvider>
         <RootScripts />
-        <PlaybookSDK ENV={ENV} />
         <ScrollRestoration
           getKey={(location) => {
             const isPdp = location.pathname.startsWith('/products/');

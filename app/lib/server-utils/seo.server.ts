@@ -6,7 +6,7 @@ import type {
   Image,
   Shop,
 } from '@shopify/hydrogen/storefront-api-types';
-import type {AppLoadContext} from '@shopify/remix-oxygen';
+import type {AppLoadContext} from 'react-router';
 import type {CollectionPage, Offer, SearchResultsPage} from 'schema-dts';
 
 import type {
@@ -25,22 +25,33 @@ export const getAccountSeo = async (
   context: AppLoadContext,
   accountTitle: string,
 ) => {
-  const [shop, siteSettings] = await Promise.all([
-    getShop(context),
-    getSiteSettings(context),
-  ]);
-  const {title: seoSiteTitle} = {
-    ...siteSettings?.data?.siteSettings?.seo,
-  } as Seo;
-  const noIndex =
-    !!siteSettings?.data?.siteSettings?.settings?.account?.noIndex;
-  const noFollow =
-    !!siteSettings?.data?.siteSettings?.settings?.account?.noFollow;
-  const robots = {noIndex, noFollow};
-  const siteTitle = seoSiteTitle || shop?.name || '';
-  const title = `${accountTitle} | ${siteTitle}`;
-  const seo = {title, robots};
-  return seo;
+  try {
+    const [shop, siteSettings] = await Promise.all([
+      getShop(context),
+      getSiteSettings(context),
+    ]);
+    const {title: seoSiteTitle} = {
+      ...siteSettings?.data?.siteSettings?.seo,
+    } as Seo;
+    const noIndex =
+      !!siteSettings?.data?.siteSettings?.settings?.account?.noIndex;
+    const noFollow =
+      !!siteSettings?.data?.siteSettings?.settings?.account?.noFollow;
+    const robots = {noIndex, noFollow};
+    const siteTitle = seoSiteTitle || shop?.name || '';
+    const title = `${accountTitle} | ${siteTitle}`;
+    const seo = {title, robots};
+    return seo;
+  } catch (error) {
+    console.error('Error fetching shop or site settings for SEO:', error);
+    return {
+      title: accountTitle,
+      robots: {
+        noIndex: false,
+        noFollow: false,
+      },
+    };
+  }
 };
 
 const getMeta = ({

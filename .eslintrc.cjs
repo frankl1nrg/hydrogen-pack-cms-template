@@ -3,7 +3,6 @@
  */
 module.exports = {
   extends: [
-    '@remix-run/eslint-config',
     'plugin:hydrogen/recommended',
     'plugin:hydrogen/typescript',
     'plugin:tailwindcss/recommended',
@@ -14,7 +13,7 @@ module.exports = {
       parser: '@typescript-eslint/parser',
     },
   ],
-  plugins: ['react-refresh'],
+  plugins: ['import', 'react-refresh'],
   rules: {
     'no-console': 'off',
     'no-inline-styles': 'off',
@@ -30,6 +29,7 @@ module.exports = {
     '@typescript-eslint/no-non-null-asserted-optional-chain': 'off',
     'no-case-declarations': 'off',
     'jest/no-deprecated-functions': 'off',
+    'no-empty': 'off',
     'react-refresh/only-export-components': [
       'error',
       {
@@ -71,6 +71,7 @@ module.exports = {
          * ```
          */
         groups: ['builtin', 'external', 'internal', 'parent', 'sibling'],
+        pathGroups: [{pattern: '~/**', group: 'internal'}],
         'newlines-between': 'always',
       },
     ],

@@ -1,5 +1,7 @@
-/// <reference types="@shopify/remix-oxygen" />
+/// <reference types="vite/client" />
+/// <reference types="react-router" />
 /// <reference types="@shopify/oxygen-workers-types" />
+/// <reference types="@shopify/hydrogen/react-router-types" />
 
 import type {
   CustomerAccount,
@@ -8,7 +10,7 @@ import type {
 } from '@shopify/hydrogen';
 import type {Pack} from '@pack/hydrogen';
 
-import type {OxygenEnv} from '~/lib/utils';
+import type {OxygenEnv} from '~/lib/server-utils/oxygen.server';
 import type {Admin} from '~/lib/admin-api-api';
 
 import type {HydrogenSession} from './server';
@@ -36,10 +38,10 @@ declare global {
     PUBLIC_PACK_CONTENT_ENVIRONMENT?: string;
     PUBLIC_STORE_DOMAIN: string;
     PUBLIC_STOREFRONT_API_TOKEN: string;
-    PUBLIC_STOREFRONT_API_VERSION: string;
     PUBLIC_STOREFRONT_ID: string;
     SESSION_SECRET: string;
     SHOP_ID: string;
+    PLAYBOOK_PLATFORM_URL?: string;
   }
 
   interface Window {
@@ -69,7 +71,7 @@ declare global {
 /**
  * Declare local additions to `AppLoadContext` to include the session utilities we injected in `server.ts`.
  */
-declare module '@shopify/remix-oxygen' {
+declare module 'react-router' {
   export interface AppLoadContext {
     session: HydrogenSession;
     storefront: Storefront;
