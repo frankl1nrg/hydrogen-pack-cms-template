@@ -36,6 +36,9 @@ export const Header = memo(() => {
       )}
     >
       <Promobar />
+      <Promobar />
+      <Promobar />
+      <Promobar />
 
       <Navigation {...desktopMenuContext} {...mobileMenuContext} />
 

@@ -1,0 +1,64 @@
+diff --git a/node_modules/@shopify/cli/oclif.manifest.json b/node_modules/@shopify/cli/oclif.manifest.json
+index 5a2129e..600d155 100644
+--- a/node_modules/@shopify/cli/oclif.manifest.json
++++ b/node_modules/@shopify/cli/oclif.manifest.json
+@@ -3770,10 +3770,7 @@
+           "type": "option"
+         },
+         "env": {
+-          "description": "Specifies the environment to perform the operation using its handle. Fetch the handle using the `env list` command.",
+-          "exclusive": [
+-            "env-branch"
+-          ],
++          "description": "Specifies the environment to perform the operation using its handle. Fetch the handle using the `env list` command. May be combined with `--env-branch` to override the deployment tag while still selecting the environment by handle (useful for release-train workflows).",
+           "hasDynamicHelp": false,
+           "multiple": false,
+           "name": "env",
+@@ -3989,10 +3986,7 @@
+           "type": "option"
+         },
+         "env": {
+-          "description": "Specifies the environment to perform the operation using its handle. Fetch the handle using the `env list` command.",
+-          "exclusive": [
+-            "env-branch"
+-          ],
++          "description": "Specifies the environment to perform the operation using its handle. Fetch the handle using the `env list` command. May be combined with `--env-branch` to override the deployment tag while still selecting the environment by handle (useful for release-train workflows).",
+           "hasDynamicHelp": false,
+           "multiple": false,
+           "name": "env",
+@@ -4108,10 +4102,7 @@
+       "enableJsonFlag": false,
+       "flags": {
+         "env": {
+-          "description": "Specifies the environment to perform the operation using its handle. Fetch the handle using the `env list` command.",
+-          "exclusive": [
+-            "env-branch"
+-          ],
++          "description": "Specifies the environment to perform the operation using its handle. Fetch the handle using the `env list` command. May be combined with `--env-branch` to override the deployment tag while still selecting the environment by handle (useful for release-train workflows).",
+           "hasDynamicHelp": false,
+           "multiple": false,
+           "name": "env",
+@@ -4174,10 +4165,7 @@
+       "enableJsonFlag": false,
+       "flags": {
+         "env": {
+-          "description": "Specifies the environment to perform the operation using its handle. Fetch the handle using the `env list` command.",
+-          "exclusive": [
+-            "env-branch"
+-          ],
++          "description": "Specifies the environment to perform the operation using its handle. Fetch the handle using the `env list` command. May be combined with `--env-branch` to override the deployment tag while still selecting the environment by handle (useful for release-train workflows).",
+           "hasDynamicHelp": false,
+           "multiple": false,
+           "name": "env",
+@@ -4684,10 +4672,7 @@
+           "type": "option"
+         },
+         "env": {
+-          "description": "Specifies the environment to perform the operation using its handle. Fetch the handle using the `env list` command.",
+-          "exclusive": [
+-            "env-branch"
+-          ],
++          "description": "Specifies the environment to perform the operation using its handle. Fetch the handle using the `env list` command. May be combined with `--env-branch` to override the deployment tag while still selecting the environment by handle (useful for release-train workflows).",
+           "hasDynamicHelp": false,
+           "multiple": false,
+           "name": "env",
